@@ -13,12 +13,22 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# ignore Xamarin.Android Resource.Designer.cs files
+**/*.Droid/**/[Rr]esource.[Dd]esigner.cs
+**/*.Android/**/[Rr]esource.[Dd]esigner.cs
+**/Android/**/[Rr]esource.[Dd]esigner.cs
+**/Droid/**/[Rr]esource.[Dd]esigner.cs
+
+# Xamarin Components
+Components/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
 x64/
+build/
 x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
@@ -63,6 +73,7 @@ StyleCopReport.xml
 *_i.c
 *_p.c
 *_h.h
+*_i.h
 *.ilk
 *.meta
 *.obj
@@ -140,6 +151,7 @@ _TeamCity*
 *.coveragexml
 
 # NCrunch
+*.ncrunch*
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
@@ -184,6 +196,7 @@ PublishScripts/
 *.nupkg
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
+packages/
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
@@ -191,6 +204,15 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
+*.lock.json
+*.nuget.props
+
+## TODO: If the tool you use requires repositories.config uncomment the next line
+#!packages/repositories.config
+
+# Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
+# This line needs to be after the ignore of the build folder (and the packages folder if the line above has been uncommented)
+!packages/build/
 
 # Microsoft Azure Build Output
 csx/
@@ -214,7 +236,10 @@ _pkginfo.txt
 !?*.[Cc]ache/
 
 # Others
+sql/
+*.Cache
 ClientBin/
+[Ss]tyle[Cc]op.*
 ~$*
 *~
 *.dbmdl
@@ -222,6 +247,9 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
+node_modules/
+.DS_Store
+*.bak
 orleans.codegen.cs
 
 # Including strong name files can present a security risk
@@ -338,3 +366,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+.vscode/settings.json
