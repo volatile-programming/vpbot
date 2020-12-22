@@ -3,11 +3,24 @@
 # __PROGRAMACIÓN VOLÁTIL CHATBOT (PVBOT)__ 
 
 ## Descripción
+
 PVBot: Es un **chatbot** que da respuesta a algunas de las preguntas más frecuentes sobre la comunidad de **Programación volátil**.
 
 ## Diseño de la aplicación
+
 ![normal editor][general]
 
 
-[pvbot]: https://imgur.com/Pr3FdrR.png
-[general]: https://imgur.com/V1W4jP3.png
+## Librerías
+
+1.	Prism
+2.	Auth0
+3.	Twilio
+4.	App Center
+5.	XF-Material-Library
+6.	ContextMenu
+7.	Plugin.ValidationRules
+
+
+[pvbot]: https://github.com/Jerajo/PVBot/blob/master/Documents/title.png?raw=true
+[general]: https://github.com/Jerajo/PVBot/blob/master/Documents/design.png?raw=true
