@@ -39,6 +39,10 @@
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -113,12 +117,6 @@
     <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PVBot.Clients.UI\PVBotClients.UI.csproj">
-      <Project>{142f4dfd-0425-48a6-8d55-5bfd114b144c}</Project>
-      <Name>PVBotClients.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\icon_white.png" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +130,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PVBot.Clients.UI\PVBot.Clients.UI.csproj">
+      <Project>{8907a215-50da-4de0-aa7c-e7d3f1a19618}</Project>
+      <Name>PVBot.Clients.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
