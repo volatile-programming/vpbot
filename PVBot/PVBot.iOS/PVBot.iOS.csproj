@@ -198,14 +198,17 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Auth0.OidcClient.iOS">
+      <Version>3.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.0" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PVBot.Clients.UI\PVBotClients.UI.csproj">
-      <Project>{142f4dfd-0425-48a6-8d55-5bfd114b144c}</Project>
-      <Name>PVBotClients.UI</Name>
+    <ProjectReference Include="..\PVBot.Clients.UI\PVBot.Clients.UI.csproj">
+      <Project>{8907a215-50da-4de0-aa7c-e7d3f1a19618}</Project>
+      <Name>PVBot.Clients.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

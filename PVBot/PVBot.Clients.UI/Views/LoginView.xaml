@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="PVBot.Clients.UI.Views.LoginView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="{Binding Title}"
+	Background="#622AE8">
+
+	<Grid Margin="0,60,0,0" RowSpacing="40">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Image Source="icon" />
+		<StackLayout Grid.Row="1" HorizontalOptions="Center">
+			<Label
+				FontSize="24"
+				HorizontalTextAlignment="Center"
+				Text="Greetings!"
+				TextColor="White" />
+			<Label
+				FontSize="18"
+				HorizontalTextAlignment="Center"
+				Text="Access with Auth0 to get help from Pvbot"
+				TextColor="White" />
+			<Button
+				x:Name="LoginButton"
+				Margin="25"
+				Background="White"
+				CornerRadius="25"
+				Text="Auh0 Page"
+				TextColor="#622AE8" />
+		</StackLayout>
+	</Grid>
+
+</ContentPage>
