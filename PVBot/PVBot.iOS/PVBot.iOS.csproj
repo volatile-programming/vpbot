@@ -203,9 +203,9 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PVBot\PVBot.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
-      <Name>PVBot</Name>
+    <ProjectReference Include="..\PVBot.Clients.UI\PVBotClients.UI.csproj">
+      <Project>{142f4dfd-0425-48a6-8d55-5bfd114b144c}</Project>
+      <Name>PVBotClients.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

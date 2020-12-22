@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PVBot.Core\PVBot.Core.csproj" />
+    <ProjectReference Include="..\PVBot.DataObjects\PVBot.DataObjects.csproj" />
   </ItemGroup>
-
+  
 </Project>
