@@ -1,12 +1,12 @@
 using Prism;
 using Prism.Ioc;
+using PVBot.Clients.UI.Views;
 using PVBot.ViewModels;
-using PVBot.Views;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 
-namespace PVBot
+namespace PVBot.Clients.UI
 {
     public partial class App
     {
@@ -19,7 +19,7 @@ namespace PVBot
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/LoginView");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -27,7 +27,8 @@ namespace PVBot
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<ChatView, ChatViewModel>();
         }
     }
 }
