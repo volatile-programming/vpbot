@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="PVBot.Views.LoginView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="{Binding Title}">
+
+	<Grid BackgroundColor="Red">
+		<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+			<Label
+				FontSize="24"
+				HorizontalOptions="Center"
+				Text="Greetings!" />
+			<Label
+				FontSize="18"
+				HorizontalOptions="Center"
+				Text="Log in to star chatting" />
+			<Button x:Name="LoginButton" Text="Login" />
+		</StackLayout>
+	</Grid>
+
+</ContentPage>
