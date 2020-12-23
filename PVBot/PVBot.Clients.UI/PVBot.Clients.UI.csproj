@@ -11,9 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PVBot.Application\PVBot.Application.csproj" />
     <ProjectReference Include="..\PVBot.Clients.Portable\PVBot.Clients.Portable.csproj" />
-    <ProjectReference Include="..\PVBot.DataStore.Mock\PVBot.DataStore.Mock.csproj" />
-    <ProjectReference Include="..\PVBot.DataStore.SQLite\PVBot.DataStore.SQLite.csproj" />
   </ItemGroup>
 
   <ItemGroup>
