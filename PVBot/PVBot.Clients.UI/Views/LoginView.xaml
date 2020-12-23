@@ -6,29 +6,43 @@
 	Title="{Binding Title}"
 	Background="#622AE8">
 
-	<Grid Margin="0,60,0,0" RowSpacing="40">
+	<Grid
+		Margin="0,60,0,0"
+		Padding="20"
+		RowSpacing="20">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		<Image Source="icon" />
-		<StackLayout Grid.Row="1" HorizontalOptions="Center">
+
+		<StackLayout>
 			<Label
-				FontSize="24"
+				FontSize="Large"
 				HorizontalTextAlignment="Center"
-				Text="Greetings!"
+				Text="Hi!, I'm"
 				TextColor="White" />
 			<Label
-				FontSize="18"
+				FontSize="46"
 				HorizontalTextAlignment="Center"
-				Text="Access with Auth0 to get help from Pvbot"
+				Text="Pvbot"
+				TextColor="White" />
+		</StackLayout>
+
+		<Image Grid.Row="1" Source="icon_white" />
+
+		<StackLayout Grid.Row="2" HorizontalOptions="Center">
+			<Label
+				FontSize="Title"
+				HorizontalTextAlignment="Center"
+				Text="Is there something I can help you?"
 				TextColor="White" />
 			<Button
 				x:Name="LoginButton"
 				Margin="25"
 				Background="White"
 				CornerRadius="25"
-				Text="Auh0 Page"
+				Text="Yes, please!"
 				TextColor="#622AE8" />
 		</StackLayout>
 	</Grid>
