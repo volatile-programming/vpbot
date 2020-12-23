@@ -1,10 +1,5 @@
 using Prism;
 using Prism.Ioc;
-using PVBot.Clients.UI.Views;
-using PVBot.ViewModels;
-using Xamarin.Essentials.Implementation;
-using Xamarin.Essentials.Interfaces;
-using Xamarin.Forms;
 
 namespace PVBot.Clients.UI
 {
@@ -24,11 +19,13 @@ namespace PVBot.Clients.UI
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+            containerRegistry.RegisterServices();
 
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
-            containerRegistry.RegisterForNavigation<ChatView, ChatViewModel>();
+            containerRegistry.RegisterCommands();
+
+            containerRegistry.RegisterQueries();
+
+            containerRegistry.RegisterViews();
         }
     }
 }
