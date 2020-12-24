@@ -1,20 +1,19 @@
-﻿using System;
-using System.Windows.Input;
+﻿using PVBot.DataObjects.Contracts;
 
 namespace PVBot.Application.Commands
 {
     public class LoginCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        private readonly IAuth0Service _auth0Service;
 
-        public bool CanExecute(object parameter)
+        public LoginCommand(IAuth0Service auth0Service)
         {
-            throw new NotImplementedException();
+            _auth0Service = auth0Service;
         }
 
-        public void Execute(object parameter)
+        public void Execute()
         {
-            throw new NotImplementedException();
+            _auth0Service.Login();
         }
     }
 }
