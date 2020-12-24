@@ -1,6 +1,6 @@
-﻿using DryIoc;
+﻿using System;
+using DryIoc;
 using Prism.Commands;
-using PVBot.Application.Contracts;
 using PVBot.DataObjects.Contracts;
 
 namespace PVBot.Application.Factories
@@ -11,11 +11,27 @@ namespace PVBot.Application.Factories
 
         public CommandFactory(IContainer container) => _container = container;
 
-        public DelegateCommand Make<TCommand>() where TCommand : ICommand
+        public TWrapper MakeCommand<TCommand, TWrapper>()
+            where TCommand : ICommand
         {
-            var command = _container.Resolve<TCommand>();
+            var command = (TCommand)_container.Resolve(typeof(TCommand), IfUnresolved.Throw);
+            Action method = command.Execute;
 
-            return new DelegateCommand(command.Execute);
+            var delegateCommand = (TWrapper)Activator
+                .CreateInstance(typeof(TWrapper), method);
+
+            return delegateCommand;
+        }
+
+        public DelegateCommand<TParam> MakeCommandWithParmeter<TCommand, TParam>()
+            where TCommand : ICommand<TParam>
+        {
+            var command = (TCommand)_container.Resolve(typeof(TCommand), IfUnresolved.Throw);
+            Action<TParam> method = command.Execute;
+
+            var delegateCommand = new DelegateCommand<TParam>(method);
+
+            return delegateCommand;
         }
     }
 }
