@@ -76,6 +76,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IdentityClient.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -135,6 +136,10 @@
     <ProjectReference Include="..\PVBot.Clients.UI\PVBot.Clients.UI.csproj">
       <Project>{8907a215-50da-4de0-aa7c-e7d3f1a19618}</Project>
       <Name>PVBot.Clients.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PVBot.DataObjects\PVBot.DataObjects.csproj">
+      <Project>{09951489-a571-43c3-85de-538e0b944d27}</Project>
+      <Name>PVBot.DataObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

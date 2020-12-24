@@ -1,6 +1,9 @@
-﻿using Foundation;
+﻿using Auth0.OidcClient;
+using Foundation;
 using Prism;
 using Prism.Ioc;
+using PVBot.Clients.UI;
+using PVBot.DataObjects.Contracts;
 using UIKit;
 
 
@@ -32,7 +35,13 @@ namespace PVBot.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            var client = new Auth0Client(new Auth0ClientOptions {
+                Domain = "volatile-programing.us.auth0.com",
+                ClientId = "GCErWQ4I0XVGmrQOMGo2sLgSHWMb4u6Y"
+            });
+
+            containerRegistry.RegisterInstance(client);
+            containerRegistry.RegisterScoped<IIdentityClient, IdentityClient>();
         }
     }
 }
