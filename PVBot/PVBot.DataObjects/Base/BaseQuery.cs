@@ -1,7 +1,7 @@
 ﻿using System;
 using PVBot.DataObjects.Contracts;
 
-namespace PVBot.Application.Queries
+namespace PVBot.DataObjects.Base
 {
     public abstract class BaseQuery<TQuery, TResult> : IQuery<TQuery, TResult>
     {
