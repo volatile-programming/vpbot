@@ -4,11 +4,44 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 	<ContentPage.Content>
-		<StackLayout>
-			<Label
-				HorizontalOptions="CenterAndExpand"
-				Text="Welcome to Xamarin.Forms!"
-				VerticalOptions="CenterAndExpand" />
-		</StackLayout>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<Grid Background="Red">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Button Text="Send" />
+				<Label
+					Grid.Column="1"
+					FontSize="Large"
+					Text="Pvbot" />
+			</Grid>
+
+			<StackLayout Grid.Row="1">
+				<Label
+					HorizontalOptions="CenterAndExpand"
+					Text="Welcome to Xamarin.Forms!"
+					VerticalOptions="CenterAndExpand" />
+			</StackLayout>
+
+			<Grid Grid.Row="2" Background="Blue">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Entry Placeholder="Message" />
+				<Button
+					Grid.Column="1"
+					Command="{Binding MyCommand}"
+					Text="Send" />
+			</Grid>
+
+		</Grid>
 	</ContentPage.Content>
 </ContentPage>
