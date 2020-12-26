@@ -1,4 +1,5 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 
 namespace PVBot.ViewModels
 {
@@ -8,6 +9,15 @@ namespace PVBot.ViewModels
             : base(navigationService)
         {
             Title = "Chat Page";
+
+            GotoOptions = new DelegateCommand(GotoOptionsCommand);
+        }
+
+        public DelegateCommand GotoOptions { get; }
+        public DelegateCommand GotoInformation { get; }
+
+        private void GotoOptionsCommand()
+        {
         }
     }
 }

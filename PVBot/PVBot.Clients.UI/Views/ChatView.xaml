@@ -2,7 +2,9 @@
 <ContentPage
 	x:Class="PVBot.Clients.UI.Views.ChatView"
 	xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:controls="clr-namespace:PVBot.Clients.Portable.Controls;assembly=PVBot.Clients.Portable"
+	xmlns:resources="clr-namespace:PVBot.Clients.Portable.Resources;assembly=PVBot.Clients.Portable">
 	<ContentPage.Content>
 		<Grid>
 			<Grid.RowDefinitions>
@@ -11,37 +13,211 @@
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 
-			<Grid Background="Red">
+			<Grid>
+				<BoxView Background="#622AE8" CornerRadius="0,0,30,30" />
+				<Grid Grid.Row="0" Padding="20,10,20,20">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<StackLayout Grid.Column="0" Orientation="Horizontal">
+						<Image
+							AutomationProperties.Name="PVBot icon"
+							Source="icon_white"
+							WidthRequest="50" />
+						<Label
+							FontSize="Medium"
+							Text="Pvbot"
+							TextColor="White"
+							VerticalTextAlignment="Center" />
+					</StackLayout>
+					<ImageButton
+						Grid.Column="1"
+						AutomationProperties.Name="Menu"
+						BackgroundColor="Transparent"
+						Command="{Binding GotoOptions}"
+						WidthRequest="20">
+						<ImageButton.Source>
+							<FontImageSource FontFamily="{x:Static resources:Fonts.FontAwesome5Solid}" Glyph="{x:Static resources:FontAwesome5Solid.EllipsisH}" />
+						</ImageButton.Source>
+					</ImageButton>
+				</Grid>
+			</Grid>
+
+			<Grid Grid.Row="1">
+				<ScrollView>
+					<StackLayout Padding="20">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="25" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="25" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Frame
+								Grid.Row="1"
+								Grid.Column="1"
+								Padding="20"
+								BackgroundColor="LightGray"
+								CornerRadius="10"
+								HorizontalOptions="Start">
+								<Label Text="Hola soy Pvbot!" />
+							</Frame>
+							<Grid
+								Grid.Row="0"
+								Grid.RowSpan="2"
+								Grid.Column="0"
+								Grid.ColumnSpan="2">
+								<BoxView
+									BackgroundColor="#622AE8"
+									CornerRadius="25"
+									HeightRequest="50"
+									HorizontalOptions="Start"
+									VerticalOptions="Start"
+									WidthRequest="50" />
+								<Image
+									Margin="5,0,0,0"
+									HorizontalOptions="Start"
+									Source="icon_white"
+									VerticalOptions="Start"
+									WidthRequest="40" />
+							</Grid>
+							<Label
+								Grid.Row="2"
+								Grid.Column="1"
+								FontSize="8"
+								HorizontalTextAlignment="Start"
+								Text="25/12/2020 2:26 PM" />
+						</Grid>
+
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="25" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="25" />
+							</Grid.ColumnDefinitions>
+							<Frame
+								Grid.Row="1"
+								Grid.Column="0"
+								Padding="20"
+								BackgroundColor="#622AE8"
+								CornerRadius="10"
+								HorizontalOptions="End">
+								<Label Text="Hola Pvbot!" TextColor="White" />
+							</Frame>
+							<Grid
+								Grid.Row="0"
+								Grid.RowSpan="2"
+								Grid.Column="0"
+								Grid.ColumnSpan="2">
+								<BoxView
+									BackgroundColor="Red"
+									CornerRadius="25"
+									HeightRequest="50"
+									HorizontalOptions="End"
+									VerticalOptions="Start"
+									WidthRequest="50" />
+								<Image
+									Margin="0,0,5,0"
+									HorizontalOptions="End"
+									Source="icon_white"
+									VerticalOptions="Start"
+									WidthRequest="40" />
+							</Grid>
+						</Grid>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="25" />
+							</Grid.ColumnDefinitions>
+							<Frame
+								Padding="20"
+								BackgroundColor="#622AE8"
+								CornerRadius="10"
+								HorizontalOptions="End">
+								<Label Text="cuentame un chiste." TextColor="White" />
+							</Frame>
+
+							<Label
+								Grid.Row="1"
+								FontSize="8"
+								HorizontalOptions="End"
+								HorizontalTextAlignment="End"
+								Text="25/12/2020 2:26 PM" />
+						</Grid>
+					</StackLayout>
+
+				</ScrollView>
+			</Grid>
+
+			<Grid Grid.Row="2" ColumnSpacing="0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-				<Button Text="Send" />
-				<Label
-					Grid.Column="1"
-					FontSize="Large"
-					Text="Pvbot" />
-			</Grid>
-
-			<StackLayout Grid.Row="1">
-				<Label
-					HorizontalOptions="CenterAndExpand"
-					Text="Welcome to Xamarin.Forms!"
-					VerticalOptions="CenterAndExpand" />
-			</StackLayout>
-
-			<Grid Grid.Row="2" Background="Blue">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				<Entry Placeholder="Message" />
-				<Button
+				<ImageButton
+					Margin="10,0"
+					AutomationProperties.Name="Menu"
+					BackgroundColor="Transparent"
+					Command="{Binding GotoOptions}"
+					WidthRequest="30">
+					<ImageButton.Source>
+						<FontImageSource
+							FontFamily="{x:Static resources:Fonts.FontAwesome5Solid}"
+							Glyph="{x:Static resources:FontAwesome5Solid.Paperclip}"
+							Color="Black" />
+					</ImageButton.Source>
+				</ImageButton>
+				<Editor
 					Grid.Column="1"
-					Command="{Binding MyCommand}"
-					Text="Send" />
-			</Grid>
+					AutoSize="TextChanges"
+					IsSpellCheckEnabled="True"
+					IsTextPredictionEnabled="True"
+					Keyboard="Chat"
+					MaxLength="500"
+					Placeholder="Type a message" />
+				<ImageButton
+					Grid.Column="2"
+					Margin="10,0"
+					AutomationProperties.Name="Menu"
+					BackgroundColor="Transparent"
+					Command="{Binding GotoOptions}"
+					WidthRequest="30">
+					<ImageButton.Source>
+						<FontImageSource
+							FontFamily="{x:Static resources:Fonts.FontAwesome5Regular}"
+							Glyph="{x:Static resources:FontAwesome5Regular.Smile}"
+							Color="Black" />
+					</ImageButton.Source>
+				</ImageButton>
 
+				<ImageButton
+					Grid.Column="3"
+					Margin="10,0"
+					Padding="10"
+					AutomationProperties.Name="Menu"
+					BackgroundColor="#622AE8"
+					Command="{Binding GotoOptions}"
+					CornerRadius="25"
+					HeightRequest="40"
+					WidthRequest="50">
+					<ImageButton.Source>
+						<FontImageSource FontFamily="{x:Static resources:Fonts.FontAwesome5Regular}" Glyph="{x:Static resources:FontAwesome5Regular.PaperPlane}" />
+					</ImageButton.Source>
+				</ImageButton>
+			</Grid>
 		</Grid>
 	</ContentPage.Content>
 </ContentPage>

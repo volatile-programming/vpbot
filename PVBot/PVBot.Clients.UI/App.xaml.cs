@@ -9,6 +9,7 @@ namespace PVBot.Clients.UI
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {
+
         }
 
         protected override async void OnInitialized()
