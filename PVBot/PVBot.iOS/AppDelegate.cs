@@ -1,10 +1,12 @@
-﻿using Auth0.OidcClient;
-using Foundation;
-using Prism;
-using Prism.Ioc;
+﻿using Foundation;
+using UIKit;
+
 using PVBot.Clients.UI;
 using PVBot.DataObjects.Contracts;
-using UIKit;
+
+using Prism;
+using Prism.Ioc;
+using Auth0.OidcClient;
 
 
 namespace PVBot.iOS
@@ -35,7 +37,8 @@ namespace PVBot.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            var client = new Auth0Client(new Auth0ClientOptions {
+            var client = new Auth0Client(new Auth0ClientOptions
+            {
                 Domain = "volatile-programing.us.auth0.com",
                 ClientId = "GCErWQ4I0XVGmrQOMGo2sLgSHWMb4u6Y"
             });

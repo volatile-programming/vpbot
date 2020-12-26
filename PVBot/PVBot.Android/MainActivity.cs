@@ -1,9 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+
 using Auth0.OidcClient;
 using Prism;
 using Prism.Ioc;
+
 using PVBot.Clients.UI;
 using PVBot.DataObjects.Contracts;
 
@@ -15,12 +17,13 @@ namespace PVBot.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+            TabLayoutResource = Resource.Layout.tabbar;
+            ToolbarResource = Resource.Layout.toolbar;
 
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App(new AndroidInitializer(this)));
         }
 
@@ -43,7 +46,8 @@ namespace PVBot.Droid
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            var client = new Auth0Client(new Auth0ClientOptions {
+            var client = new Auth0Client(new Auth0ClientOptions
+            {
                 Domain = "volatile-programing.us.auth0.com",
                 ClientId = "GCErWQ4I0XVGmrQOMGo2sLgSHWMb4u6Y"
             }, _mainActivity);
