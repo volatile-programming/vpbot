@@ -1,5 +1,6 @@
 ﻿using DryIoc;
-using PVBot.DataObjects.Contracts;
+using PVBot.DataObjects.Contracts.Core;
+using PVBot.DataObjects.Contracts.Factories;
 
 namespace PVBot.Application.Factories
 {
@@ -10,9 +11,10 @@ namespace PVBot.Application.Factories
         public QueryFactory(IContainer container) => _container = container;
 
 
-        public TQuery Make<TQuery>() where TQuery : IQueryBase
+        public TQuery MakeQuery<TQuery>() where TQuery : IQueryBase
         {
-            var query = (TQuery)_container.Resolve(typeof(TQuery), IfUnresolved.Throw);
+            var query = (TQuery)_container.Resolve(typeof(TQuery),
+                IfUnresolved.ReturnDefault);
 
             return query;
         }

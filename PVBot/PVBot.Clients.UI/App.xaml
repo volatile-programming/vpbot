@@ -3,8 +3,14 @@
 	x:Class="PVBot.Clients.UI.App"
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:portable="http://pvbot.com"
 	xmlns:prism="http://prismlibrary.com">
 	<Application.Resources>
-		<ResourceDictionary />
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<portable:DefaultTheme />
+				<portable:MessageCardStyles />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
 	</Application.Resources>
 </prism:PrismApplication>

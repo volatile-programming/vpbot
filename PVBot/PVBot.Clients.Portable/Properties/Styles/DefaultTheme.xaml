@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+	x:Class="PVBot.Clients.Portable.Properties.Styles.DefaultTheme"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<Color x:Key="PrimaryColor">#622AE8</Color>
+	<Color x:Key="SecundayColor">LightGray</Color>
+	<Color x:Key="FontColor">#000000</Color>
+	<Color x:Key="FontHylight">#ffffff</Color>
+
+</ResourceDictionary>

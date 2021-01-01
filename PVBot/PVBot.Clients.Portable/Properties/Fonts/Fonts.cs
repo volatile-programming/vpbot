@@ -1,7 +1,6 @@
 ﻿using PVBot.Clients.Portable.Enums;
-using PVBot.DataObjects.Base;
 
-namespace PVBot.Clients.Portable.Resources
+namespace PVBot.Clients.Portable.Properties.Fonts
 {
     public static class Fonts
     {

@@ -1,11 +1,16 @@
 ﻿using PVBot.Clients.Portable.Enums;
-using PVBot.Clients.Portable.Resources;
+using PVBot.Clients.Portable.Properties.Fonts;
 using Xamarin.Forms;
 
 namespace PVBot.Clients.Portable.Controls
 {
     public class IconButton : ImageButton
     {
+        public IconButton()
+        {
+            InitilializeComponents();
+        }
+
         #region Properties
 
         public FontFamilies FontFamily
@@ -37,10 +42,8 @@ namespace PVBot.Clients.Portable.Controls
 
         #region Methods
 
-        protected override void OnParentSet()
+        protected void InitilializeComponents()
         {
-            base.OnParentSet();
-
             UpdateImageSourse();
         }
 
