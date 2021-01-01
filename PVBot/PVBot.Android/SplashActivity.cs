@@ -13,7 +13,7 @@ namespace PVBot.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+            StartActivity(new Intent(Android.App.Application.Context, typeof(MainActivity)));
         }
     }
 }

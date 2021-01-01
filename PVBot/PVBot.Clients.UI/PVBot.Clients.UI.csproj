@@ -4,16 +4,26 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;MOCK</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Plugin.FluentValidationRules" Version="1.0.6" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.0" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+    <PackageReference Include="XF.Material" Version="1.7.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PVBot.Application.Mock\PVBot.Application.Mock.csproj" />
+    <ProjectReference Include="..\PVBot.Application\PVBot.Application.csproj" />
     <ProjectReference Include="..\PVBot.Clients.Portable\PVBot.Clients.Portable.csproj" />
-    <ProjectReference Include="..\PVBot.DataStore.Mock\PVBot.DataStore.Mock.csproj" />
-    <ProjectReference Include="..\PVBot.DataStore.SQLite\PVBot.DataStore.SQLite.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +31,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OptionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
