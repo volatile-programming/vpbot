@@ -7,7 +7,7 @@ namespace PVBot.Droid
     [Application(
         Theme = "@style/MainTheme"
         )]
-    public class MainApplication : Application
+    public class MainApplication : Android.App.Application
     {
         public MainApplication(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)

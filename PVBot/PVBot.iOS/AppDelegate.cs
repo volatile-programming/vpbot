@@ -1,8 +1,17 @@
-﻿using Foundation;
+﻿using Auth0.OidcClient;
+using Foundation;
 using Prism;
 using Prism.Ioc;
-using UIKit;
+using Auth0.OidcClient;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
+using PVBot.Clients.UI;
+using PVBot.DataObjects.Contracts.Services;
+using PVBot.DataObjects.Properties;
+using PVBot.iOS.Services;
+using UIKit;
 
 namespace PVBot.iOS
 {
@@ -22,9 +31,22 @@ namespace PVBot.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            global::XF.Material.iOS.Material.Init();
+            AppCenter.Start("c852690c-fdfd-46fb-919b-41a3dc147168",
+                   typeof(Analytics), typeof(Crashes));
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        // 
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            ActivityMediator.Instance.Send(url.AbsoluteString);
+
+            //return base.OpenUrl(application, url, sourceApplication, annotation);
+            return true;
         }
     }
 
@@ -32,7 +54,14 @@ namespace PVBot.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            var client = new Auth0Client(new Auth0ClientOptions
+            {
+                Domain = Secrets.Auth0Domain,
+                ClientId = Secrets.Auth0ClientId
+            });
+
+            containerRegistry.RegisterInstance(client);
+            containerRegistry.RegisterScoped<IIdentityClientService, IdentityClientService>();
         }
     }
 }

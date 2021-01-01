@@ -1,34 +1,39 @@
 using Prism;
+using Prism.DryIoc;
 using Prism.Ioc;
-using PVBot.Clients.UI.Views;
-using PVBot.ViewModels;
-using Xamarin.Essentials.Implementation;
-using Xamarin.Essentials.Interfaces;
-using Xamarin.Forms;
+using PVBot.Clients.Portable.Controls;
 
 namespace PVBot.Clients.UI
 {
-    public partial class App
+    public partial class App : PrismApplication
     {
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {
+            //var testCI = Container.Resolve<MessageCard>();
         }
 
         protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/LoginView");
+            XF.Material.Forms.Material.Init(this);
+            Portable.PVBotPortable.Init(this);
+
+            await NavigationService.NavigateAsync("LoginView");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+            containerRegistry.RegisterServices();
 
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
-            containerRegistry.RegisterForNavigation<ChatView, ChatViewModel>();
+            containerRegistry.RegisterFactories();
+
+            containerRegistry.RegisterCommands();
+
+            containerRegistry.RegisterQueries();
+
+            containerRegistry.RegisterViews();
         }
     }
 }
