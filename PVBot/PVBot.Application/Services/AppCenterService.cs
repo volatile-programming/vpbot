@@ -1,4 +1,4 @@
-﻿using PVBot.DataObjects.Contracts;
+﻿using PVBot.DataObjects.Contracts.Services;
 
 namespace PVBot.Application.Services
 {

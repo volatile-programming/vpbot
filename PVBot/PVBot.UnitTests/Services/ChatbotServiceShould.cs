@@ -6,14 +6,14 @@ using PVBot.DataObjects.Models;
 namespace PVBot.UnitTests.Services
 {
     [TestClass]
-    public class TwillioServiceShould
+    public class ChatbotServiceShould
     {
-        private TwilioService _sut;
+        private ChatbotService _sut;
 
         [TestInitialize]
         public void Initialize()
         {
-            _sut = new TwilioService();
+            _sut = new ChatbotService();
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace PVBot.UnitTests.Services
 
             messages.Should().NotBeEmpty();
             messages.Should().NotContainNulls();
-            messages.Should().AllBeOfType<Message>();
+            messages.Should().AllBeAssignableTo<Message>();
         }
 
         [TestMethod]

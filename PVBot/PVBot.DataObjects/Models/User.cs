@@ -1,16 +1,11 @@
-﻿using System;
+﻿using PVBot.DataObjects.Base;
 
 namespace PVBot.DataObjects.Models
 {
-    public class User
+    public class User : BaseEntity
     {
-        public User(string username, string image)
-        {
-            UserName = username;
-            Image = image;
-        }
-
-        public string UserName { get; }
-        public string Image { get; }
+        public string Email { get; set; }
+        public string UserName { get; set; }
+        public string ImagePath { get; set; }
     }
 }

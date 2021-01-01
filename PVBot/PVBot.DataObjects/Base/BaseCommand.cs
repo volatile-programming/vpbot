@@ -3,13 +3,13 @@ using PVBot.DataObjects.Contracts.Core;
 
 namespace PVBot.DataObjects.Base
 {
-    public abstract class BaseQuery<TQuery, TResult> : IQuery<TQuery, TResult>
+    public abstract class BaseCommand<TCommand> : ICommandBase
+        where TCommand : ICommandBase
     {
         private readonly Func<bool> _canExecute;
         public event EventHandler CanExecuteChanged;
 
-
-        public BaseQuery(Func<bool> canExecute = null) =>
+        public BaseCommand(Func<bool> canExecute = null) =>
             _canExecute = canExecute;
 
         public bool CanExecute(object parameter) => RaiceCanExecute();
@@ -23,14 +23,6 @@ namespace PVBot.DataObjects.Base
             return canExecute;
         }
 
-        public abstract TResult Execute(TQuery query);
-
-        public void Execute(object parameter)
-        {
-            if (!(parameter is TQuery query))
-                return;
-
-            Execute(query);
-        }
+        public abstract void Execute(object parameter);
     }
 }

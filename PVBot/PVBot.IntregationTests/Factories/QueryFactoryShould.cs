@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+
 using PVBot.Application.Factories;
 using PVBot.Application.Queries;
 using PVBot.Application.Services;
@@ -16,7 +17,7 @@ namespace PVBot.IntregationTests.Factories
         [TestInitialize]
         public void Inizialize()
         {
-            var service = new TwilioService();
+            var service = new ChatbotService();
             var quey = new GetMessagesQuery(service);
 
             var container = new Mock<IContainer>();
@@ -27,9 +28,9 @@ namespace PVBot.IntregationTests.Factories
         }
 
         [TestMethod]
-        public void CreateQueryIntance()
+        public void MakeQuery()
         {
-            var command = _sut.Make<GetMessagesQuery>();
+            var command = _sut.MakeQuery<GetMessagesQuery>();
 
             command.Should().NotBeNull();
             command.Should().BeAssignableTo<GetMessagesQuery>();

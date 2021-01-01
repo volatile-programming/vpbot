@@ -3,7 +3,7 @@
 namespace PVBot.UnitTests.Services
 {
     [TestClass]
-    public class AppCenterServiceShould
+    public class IdentityClientService
     {
     }
 }
