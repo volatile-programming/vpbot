@@ -2,7 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace PVBot.ViewModels
+namespace PVBot.Clients.UI.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {

@@ -59,5 +59,113 @@ namespace PVBot.DataObjects.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds a emoji in the message..
+        /// </summary>
+        public static string ChatScreenEmojiButtonDescription {
+            get {
+                return ResourceManager.GetString("ChatScreenEmojiButtonDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds a file message..
+        /// </summary>
+        public static string ChatScreenFileButtonDescription {
+            get {
+                return ResourceManager.GetString("ChatScreenFileButtonDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pvbot is thinking....
+        /// </summary>
+        public static string ChatScreenLoadingMessage {
+            get {
+                return ResourceManager.GetString("ChatScreenLoadingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the options..
+        /// </summary>
+        public static string ChatScreenOptionsButtonDescription {
+            get {
+                return ResourceManager.GetString("ChatScreenOptionsButtonDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sends the message..
+        /// </summary>
+        public static string ChatScreenSendButtonDescription {
+            get {
+                return ResourceManager.GetString("ChatScreenSendButtonDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string LoadingScreenMessage {
+            get {
+                return ResourceManager.GetString("LoadingScreenMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Pvbot logo..
+        /// </summary>
+        public static string MainScreeLogoDescription {
+            get {
+                return ResourceManager.GetString("MainScreeLogoDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, please!.
+        /// </summary>
+        public static string MainScreenCustomerAnswer {
+            get {
+                return ResourceManager.GetString("MainScreenCustomerAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi!, I&apos;m.
+        /// </summary>
+        public static string MainScreenGreetings {
+            get {
+                return ResourceManager.GetString("MainScreenGreetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is there something I can help you?.
+        /// </summary>
+        public static string MainScreenQuestion {
+            get {
+                return ResourceManager.GetString("MainScreenQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know what to say, just yet!.
+        /// </summary>
+        public static string PvbotDefaultResponse {
+            get {
+                return ResourceManager.GetString("PvbotDefaultResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a WIP!.
+        /// </summary>
+        public static string WipDialogMessage {
+            get {
+                return ResourceManager.GetString("WipDialogMessage", resourceCulture);
+            }
+        }
     }
 }

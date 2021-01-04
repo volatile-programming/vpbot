@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace PVBot.DataObjects.Contracts.Core
 {
-    public interface IPersistence<TEntity> : IEnumerable<TEntity>
-        where TEntity : class, IEntity<Guid>
+    public interface IPersistence<TEntity> where TEntity : class, IEntity<Guid>
     {
-        TEntity Find(TEntity entity);
-        TEntity Find(Func<TEntity, bool> query);
-        List<TEntity> GetAll();
-        Task<List<TEntity>> GetAllAsync();
+        IUnitOfWork UnitOfWork { get; set; }
         void Add(TEntity entity);
-        Task AddAsync(TEntity entity);
-        void Update(TEntity message);
-        Task UpdateAsync(TEntity message);
+        bool Any(Func<TEntity, bool> query);
+        TEntity Find(Expression<Func<TEntity, bool>> query);
+        Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> query);
+        List<TEntity> Query(Expression<Func<TEntity, bool>> query = null);
+        Task<List<TEntity>> QueryAsync(Expression<Func<TEntity, bool>> query = null);
         void Remove(TEntity entity);
-        Task RemoveAsync(TEntity entity);
+        void Update(TEntity entity);
     }
 }

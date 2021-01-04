@@ -17,7 +17,7 @@ namespace PVBot.Clients.Portable.Extensions
             return command;
         }
 
-        public static DelegateCommand<TParam> MakeDelegateWithParmeter<TCommand, TParam>(
+        public static DelegateCommand<TParam> MakeDelegateWithParameter<TCommand, TParam>(
             this ICommandFactory commandFactory)
             where TCommand : ICommand<TParam>
         {

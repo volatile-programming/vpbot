@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Prism.Ioc;
+using SQLite;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 
@@ -15,6 +16,9 @@ using PVBot.Clients.Portable.Controls;
 using PVBot.DataObjects.Contracts.Factories;
 using PVBot.DataObjects.Contracts.Services;
 using PVBot.DataObjects.Contracts.Core;
+using PVBot.Clients.UI.Persistences;
+using PVBot.DataObjects.Models;
+using PVBot.Clients.UI.Commands;
 
 #if MOCK
 using PVBot.Application.Mock.Services;
@@ -22,25 +26,33 @@ using PVBot.Application.Mock.Services;
 using PVBot.Application.Services;
 #endif
 
-namespace PVBot.Clients.UI
+namespace PVBot.Clients.UI.Properties
 {
     public static class IocConfig
     {
         public static void RegisterServices(this IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+            containerRegistry.RegisterSingleton<IApplicationConfig, ApplicationConfig>();
+            containerRegistry.RegisterScoped<IIdentityClientService, IdentityClientService>();
             containerRegistry.RegisterScoped<IChatbotService, ChatbotService>();
             containerRegistry.RegisterScoped<IAppCenterService, AppCenterService>();
 
-            containerRegistry.RegisterSingleton<MessagesRepository>();
-            containerRegistry.RegisterScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
-            containerRegistry.RegisterScoped(typeof(IPersistence<>), typeof(Persistence<>));
-            containerRegistry.RegisterInstance<IMapper>(new Mapper(CreateConfiguration()));
+            containerRegistry.RegisterInstance<IMapper>(new Mapper(MapperConfig.CreateConfiguration()));
+            containerRegistry.RegisterSingleton(typeof(IRepository<>), typeof(Repository<>));
+            containerRegistry.RegisterScoped<IUnitOfWork, UnitOfWork>();
+
+            containerRegistry.RegisterScoped(typeof(IPersistence<>), typeof(SqlitePersistence<>));
+            containerRegistry.RegisterInstance(
+                new SQLiteConnection(PersistenceConfig.DatabasePath,
+                PersistenceConfig.SqliteFlags));
+            containerRegistry.RegisterInstance(
+                new SQLiteAsyncConnection(PersistenceConfig.DatabasePath,
+                PersistenceConfig.SqliteFlags));
         }
 
         public static void RegisterFactories(this IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterScoped<IRepositoryFactory, RepositoryFactory>();
             containerRegistry.RegisterScoped<ICommandFactory, CommandFactory>();
             containerRegistry.RegisterScoped<IQueryFactory, QueryFactory>();
             containerRegistry.RegisterScoped<IPersistenceFactory, PersistenceFactory>();
@@ -49,6 +61,7 @@ namespace PVBot.Clients.UI
         public static void RegisterCommands(this IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterScoped<AuthenticateUserCommand>();
+            containerRegistry.RegisterScoped<NavigateToChatCommand>();
             containerRegistry.RegisterScoped<SendMessageCommand>();
             containerRegistry.RegisterScoped<SaveStateCommand>();
         }
@@ -65,17 +78,8 @@ namespace PVBot.Clients.UI
             containerRegistry.RegisterForNavigation<OptionsView, OptionsViewModel>();
 
             containerRegistry.RegisterScoped<MessageCard>();
-            containerRegistry.RegisterScoped<MessageViewModel>();
-        }
-
-        private static MapperConfiguration CreateConfiguration()
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddMaps(typeof(IocConfig).Assembly);
-            });
-
-            return config;
+            containerRegistry.RegisterScoped<ChatbotViewModel>();
+            containerRegistry.RegisterScoped<IChatBoxModel, ChatBoxViewModel>();
         }
     }
 }

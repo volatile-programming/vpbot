@@ -1,14 +1,17 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using DryIoc;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AutoMapper;
 using Moq;
 using Prism.Commands;
+using Prism.Events;
 
 using PVBot.Application.Commands;
-using PVBot.Application.Repositories;
 using PVBot.Clients.Portable.Extensions;
 using PVBot.Clients.UI.Factories;
-using PVBot.DataObjects.Contracts.Factories;
+using PVBot.DataObjects.Contracts.Core;
+using PVBot.DataObjects.Contracts.Services;
 using PVBot.DataObjects.Models;
 
 namespace PVBot.IntregationTests.Factories
@@ -50,20 +53,25 @@ namespace PVBot.IntregationTests.Factories
         public void MakeDelegateWithParmeter()
         {
             var container = new Mock<IContainer>();
-            var repository = new Mock<IRepositoryFactory>();
-
-            repository.Setup(m => m.MakeRepository<MessagesRepository>())
-                .Returns(() => null);
+            var repository = new Mock<IRepository<Message>>();
+            var eventAgregator = new Mock<IEventAggregator>();
+            var chatbotService = new Mock<IChatbotService>();
+            var unitOfWork = new Mock<IUnitOfWork>();
+            var mapper = new Mock<IMapper>();
 
             container.Setup(m => m.Resolve(typeof(SendMessageCommand), It.IsAny<IfUnresolved>()))
-                .Returns(() => new SendMessageCommand(repository.Object));
+                .Returns(() => new SendMessageCommand(messageRepository: repository.Object,
+                    eventAgregator: eventAgregator.Object,
+                    chabotService: chatbotService.Object,
+                    unitOfWork: unitOfWork.Object,
+                    mapper: mapper.Object));
 
             var sut = new CommandFactory(container.Object);
 
-            var command = sut.MakeDelegateWithParmeter<SendMessageCommand, Message>();
+            var command = sut.MakeDelegateWithParameter<SendMessageCommand, IChatBoxModel>();
 
             command.Should().NotBeNull();
-            command.Should().BeAssignableTo<DelegateCommand<Message>>();
+            command.Should().BeAssignableTo<DelegateCommand<IChatBoxModel>>();
         }
     }
 }
