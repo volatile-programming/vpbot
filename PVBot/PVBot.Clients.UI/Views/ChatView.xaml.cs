@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace PVBot.Clients.UI.Views
 {
@@ -8,6 +10,18 @@ namespace PVBot.Clients.UI.Views
         public ChatView()
         {
             InitializeComponent();
+
+            MessageCardContainer.ItemAppearing += OnItemAppearing;
+        }
+
+        private void OnItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            ScrollToBottom(e.Item);
+        }
+
+        private void ScrollToBottom(object element)
+        {
+            MessageCardContainer.ScrollTo(element, ScrollToPosition.MakeVisible, true);
         }
     }
 }

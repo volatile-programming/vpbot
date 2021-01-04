@@ -1,46 +1,74 @@
 ﻿using System;
+
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
+
 using PVBot.Application.Commands;
+using PVBot.Clients.Portable.Extensions;
+using PVBot.Clients.UI.Commands;
+using PVBot.DataObjects.Contracts.Core;
+using PVBot.Clients.UI.ViewModels;
 using PVBot.DataObjects.Contracts.Factories;
-using PVBot.DataObjects.Extensions;
 
 namespace PVBot.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+
+    public class LoginViewModel : ViewModelBase, IProcessAware
     {
-        private readonly IDialogService dialogService;
+        private readonly IApplicationConfig _appConfig;
+        private readonly IDialogService _dialogService;
+        private readonly DelegateCommand<IProcessAware> _authoriseUserCommand;
 
         public LoginViewModel(INavigationService navigationService,
             ICommandFactory commandFactory,
-            IDialogService dialogService)
+            IDialogService dialogService,
+            IApplicationConfig appConfig)
             : base(navigationService)
         {
+            _dialogService = dialogService;
+            _appConfig = appConfig;
+            _authoriseUserCommand = commandFactory
+                .MakeDelegateWithParameter<AuthoriseUserCommand, IProcessAware>();
+
             Title = "Login Page";
+            IsLoading = true;
 
-            AuthenticateUser = commandFactory.MakeCommand<AuthenticateUserCommand>();
-            LoginCommand = new DelegateCommand(GetUserCredentialsCommand);
-            this.dialogService = dialogService;
+            NavitateCommand = commandFactory.MakeDelegateCommand<NavigateToChatCommand>();
         }
 
-        public AuthenticateUserCommand AuthenticateUser { get; }
-        public DelegateCommand LoginCommand { get; }
+        public DelegateCommand NavitateCommand { get; }
 
-        private void GetUserCredentialsCommand() =>
-            AuthenticateUser.Execute(new Action<string>(OnLoaginCompleted));
+        public bool IsLoading { get; set; }
 
-        private void OnLoaginCompleted(string errorMessage)
+        private void ValidateSection()
         {
-            if (string.IsNullOrWhiteSpace(errorMessage))
-                NavigationService.NavigateAsync("/ChatView");
+
+            if (string.IsNullOrWhiteSpace(_appConfig.UserAccessToken))
+                IsLoading = false;
             else
-                OnLoginFailed(errorMessage);
+                _authoriseUserCommand.Execute(this);
         }
 
-        private void OnLoginFailed(string errorMessage)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            dialogService.ShowDialogAsync(errorMessage);
+            ValidateSection();
+        }
+
+        public Action<string> ErrorCallBack => OnAuthenticationCompleted;
+
+        public void OnAuthenticationCompleted(string errorMessage)
+        {
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                IsLoading = true;
+                NavigationService.NavigateAsync("/ChatView");
+            }
+            else
+            {
+                IsLoading = false;
+                _dialogService.ShowDialogAsync(errorMessage);
+            }
         }
     }
 }
