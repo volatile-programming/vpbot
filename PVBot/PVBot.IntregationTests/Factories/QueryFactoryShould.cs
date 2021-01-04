@@ -6,6 +6,8 @@ using Moq;
 using PVBot.Application.Factories;
 using PVBot.Application.Queries;
 using PVBot.Application.Services;
+using PVBot.DataObjects.Contracts.Core;
+using PVBot.DataObjects.Contracts.Services;
 
 namespace PVBot.IntregationTests.Factories
 {
@@ -17,8 +19,9 @@ namespace PVBot.IntregationTests.Factories
         [TestInitialize]
         public void Inizialize()
         {
-            var service = new ChatbotService();
-            var quey = new GetMessagesQuery(service);
+            var chatbotService = new Mock<IChatbotService>();
+            var unitOfWork = new Mock<IUnitOfWork>();
+            var quey = new GetMessagesQuery(chatbotService.Object, unitOfWork.Object);
 
             var container = new Mock<IContainer>();
             container.Setup(m => m.Resolve(typeof(GetMessagesQuery), It.IsAny<IfUnresolved>()))
