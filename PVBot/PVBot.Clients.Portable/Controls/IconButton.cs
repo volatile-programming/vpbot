@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace PVBot.Clients.Portable.Controls
 {
-    public class IconButton : ImageButton
+    public partial class IconButton : ImageButton
     {
         public IconButton()
         {

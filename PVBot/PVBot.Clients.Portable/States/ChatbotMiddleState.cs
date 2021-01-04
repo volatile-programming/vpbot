@@ -6,146 +6,178 @@ namespace PVBot.Clients.Portable.States
 {
     public class UserOnlyState : MessageState
     {
-        protected override void SetState(MessageCard context)
+        protected override void SetState()
         {
             // Main container
-            context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+            Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                 ResourceKeys.OnlyMessageUserStyle);
 
             // User Imagge
-            Grid.SetRowSpan(context.UserImageContainer, 2);
-            Grid.SetColumnSpan(context.UserImageContainer, 2);
+            Context.UserImageBackground.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatImageBackgroundUserStyle);
 
-            var horizontalOption = LayoutOptions.Start;
-            context.UserImageBackground.HorizontalOptions = horizontalOption;
-            context.UserImage.HorizontalOptions = horizontalOption;
+            Grid.SetRowSpan(Context.UserImageContainer, 2);
+            Grid.SetColumnSpan(Context.UserImageContainer, 2);
+
+            var horizontalOption = LayoutOptions.End;
+            Context.UserImageBackground.HorizontalOptions = horizontalOption;
+            Context.UserImage.HorizontalOptions = horizontalOption;
 
             var verticalOption = LayoutOptions.Start;
-            context.UserImageBackground.VerticalOptions = verticalOption;
-            context.UserImage.VerticalOptions = verticalOption;
+            Context.UserImageBackground.VerticalOptions = verticalOption;
+            Context.UserImage.VerticalOptions = verticalOption;
 
             // Mesage content
-            context.MessageContainer.HorizontalOptions = horizontalOption;
+            Context.MessageContainer.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.MessageContainerUserStyle);
+            Context.MessageText.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatTextUserStyle);
 
-            Grid.SetRow(context.MessageContainer, 1);
-            Grid.SetColumn(context.MessageContainer, 1);
+            Context.MessageContainer.HorizontalOptions = horizontalOption;
+
+            Grid.SetRow(Context.MessageContainer, 1);
+            Grid.SetColumn(Context.MessageContainer, 0);
 
             // Mesage Date
-            context.DateLabel.HorizontalTextAlignment = TextAlignment.Start;
+            Context.DateLabel.HorizontalTextAlignment = TextAlignment.End;
 
-            Grid.SetRow(context.DateLabel, 2);
-            Grid.SetColumn(context.DateLabel, 1);
+            Grid.SetRow(Context.DateLabel, 2);
+            Grid.SetColumn(Context.DateLabel, 0);
         }
 
-        protected override void UpdateState(MessageCard context, bool isUpdatingState = false) { }
+        protected override void UpdateState(bool isUpdatingState = false) { }
     }
 
     public class UserFirtsState : MessageState
     {
-        protected override void SetState(MessageCard context)
+        protected override void SetState()
         {
             // Main container
-            context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+            Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                 ResourceKeys.FistMessageUserStyle);
 
             // User Imagge
-            Grid.SetRowSpan(context.UserImageContainer, 2);
-            Grid.SetColumnSpan(context.UserImageContainer, 2);
+            Context.UserImageBackground.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatImageBackgroundUserStyle);
 
-            var horizontalOption = LayoutOptions.Start;
-            context.UserImageBackground.HorizontalOptions = horizontalOption;
-            context.UserImage.HorizontalOptions = horizontalOption;
+            Grid.SetRowSpan(Context.UserImageContainer, 2);
+            Grid.SetColumnSpan(Context.UserImageContainer, 2);
+
+            var horizontalOption = LayoutOptions.End;
+            Context.UserImageBackground.HorizontalOptions = horizontalOption;
+            Context.UserImage.HorizontalOptions = horizontalOption;
 
             var verticalOption = LayoutOptions.Start;
-            context.UserImageBackground.VerticalOptions = verticalOption;
-            context.UserImage.VerticalOptions = verticalOption;
+            Context.UserImageBackground.VerticalOptions = verticalOption;
+            Context.UserImage.VerticalOptions = verticalOption;
 
             // Mesage content
-            context.MessageContainer.HorizontalOptions = horizontalOption;
+            Context.MessageContainer.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.MessageContainerUserStyle);
+            Context.MessageText.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatTextUserStyle);
 
-            Grid.SetRow(context.MessageContainer, 1);
-            Grid.SetColumn(context.MessageContainer, 1);
+            Context.MessageContainer.HorizontalOptions = horizontalOption;
 
-            UpdateState(context);
+            Grid.SetRow(Context.MessageContainer, 1);
+            Grid.SetColumn(Context.MessageContainer, 0);
+
+            UpdateState();
         }
 
-        protected override void UpdateState(MessageCard context, bool isUpdatingState = false)
+        protected override void UpdateState(bool isUpdatingState = false)
         {
             // Mesage Date
-            Grid.SetRow(context.DateLabel, 0);
-            Grid.SetColumn(context.DateLabel, 0);
+            Grid.SetRow(Context.DateLabel, 0);
+            Grid.SetColumn(Context.DateLabel, 0);
 
-            context.DateLabel.IsVisible = false;
+            Context.DateLabel.IsVisible = false;
 
             // Main container
             if (isUpdatingState)
-                context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+                Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                     ResourceKeys.FistMessageUserStyle);
         }
     }
 
     public class UserLastState : MessageState
     {
-        protected override void SetState(MessageCard context)
+        protected override void SetState()
         {
             // Main container
-            context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+            Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                 ResourceKeys.LastMessageUserStyle);
 
             // User Imagge
-            context.UserImageBackground.IsVisible = false;
-            context.UserImage.IsVisible = false;
+            Context.UserImageBackground.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatImageBackgroundUserStyle);
+
+            Context.UserImageBackground.IsVisible = false;
+            Context.UserImage.IsVisible = false;
 
             // Mesage content
-            context.MessageContainer.HorizontalOptions = LayoutOptions.Start;
+            Context.MessageContainer.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.MessageContainerUserStyle);
+            Context.MessageText.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatTextUserStyle);
 
-            Grid.SetRow(context.MessageContainer, 0);
-            Grid.SetColumn(context.MessageContainer, 1);
+            Context.MessageContainer.HorizontalOptions = LayoutOptions.End;
 
-            UpdateState(context);
+            Grid.SetRow(Context.MessageContainer, 0);
+            Grid.SetColumn(Context.MessageContainer, 0);
+
+            UpdateState();
         }
 
-        protected override void UpdateState(MessageCard context, bool isUpdatingState = false)
+        protected override void UpdateState(bool isUpdatingState = false)
         {
             // Main container
             if (isUpdatingState)
-                context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+                Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                     ResourceKeys.LastMessageUserStyle);
 
             // Mesage Date
-            context.DateLabel.HorizontalTextAlignment = TextAlignment.Start;
+            Context.DateLabel.HorizontalTextAlignment = TextAlignment.End;
 
-            Grid.SetRow(context.DateLabel, 1);
-            Grid.SetColumn(context.DateLabel, 1);
+            Grid.SetRow(Context.DateLabel, 1);
+            Grid.SetColumn(Context.DateLabel, 0);
 
         }
     }
 
     public class UserMiddleState : MessageState
     {
-        protected override void SetState(MessageCard context)
+        protected override void SetState()
         {
+            // User Image
+            Context.UserImageBackground.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatImageBackgroundUserStyle);
+
             // Mesage content
-            context.MessageContainer.HorizontalOptions = LayoutOptions.Start;
+            Context.MessageContainer.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.MessageContainerUserStyle);
+            Context.MessageText.SetDynamicResource(VisualElement.StyleProperty,
+                ResourceKeys.ChatTextUserStyle);
 
-            Grid.SetColumn(context.MessageContainer, 1);
+            Context.MessageContainer.HorizontalOptions = LayoutOptions.End;
 
-            UpdateState(context);
+            Grid.SetColumn(Context.MessageContainer, 0);
+
+            UpdateState();
         }
 
-        protected override void UpdateState(MessageCard context, bool isUpdatingState = false)
+        protected override void UpdateState(bool isUpdatingState = false)
         {
-            // User Imagge
-            context.UserImageBackground.IsVisible = false;
-            context.UserImage.IsVisible = false;
+            Context.UserImageBackground.IsVisible = false;
+            Context.UserImage.IsVisible = false;
 
             // Mesage Date
-            Grid.SetRow(context.DateLabel, 0);
+            Grid.SetRow(Context.DateLabel, 0);
 
-            context.DateLabel.IsVisible = false;
+            Context.DateLabel.IsVisible = false;
 
             // Main container
-            context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
+            Context.MainContainer.SetDynamicResource(VisualElement.StyleProperty,
                 ResourceKeys.MiddleMessageUserStyle);
         }
     }
