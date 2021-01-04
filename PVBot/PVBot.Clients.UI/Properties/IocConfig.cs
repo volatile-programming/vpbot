@@ -20,7 +20,7 @@ using PVBot.Clients.UI.Persistences;
 using PVBot.DataObjects.Models;
 using PVBot.Clients.UI.Commands;
 
-#if !MOCK
+#if MOCK
 using PVBot.Application.Mock.Services;
 #else
 using PVBot.Application.Services;
