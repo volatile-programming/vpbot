@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PVBot.Android", "PVBot\PVBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PVBot.iOS", "PVBot\PVBot.iOS\PVBot.iOS.csproj", "{DED6D935-CE04-4F2A-877A-D5C52D75F0D5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Framework", "0 - Framework", "{E7BE8B8E-1A9C-4B51-99FA-B037AA608E73}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Core", "0 - Core", "{E7BE8B8E-1A9C-4B51-99FA-B037AA608E73}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Logic", "1 - Logic", "{CFC66E20-949F-4690-95F8-4AB0C2A6945D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Framework", "1 - Framework", "{CFC66E20-949F-4690-95F8-4AB0C2A6945D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BE64260A-930A-436E-91DC-BDB1F33BC9A8}"
 EndProject
@@ -36,7 +36,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PVBot.Application", "PVBot\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PVBot.Application.Mock", "PVBot\PVBot.Application.Mock\PVBot.Application.Mock.csproj", "{1A6F4E60-F5FB-49EE-9E3A-6854110CB0F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PVBot.IntregationTests", "PVBot\PVBot.IntregationTests\PVBot.IntregationTests.csproj", "{B6F7400C-B540-4C5B-A8E7-786ADDE41859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PVBot.IntregationTests", "PVBot\PVBot.IntregationTests\PVBot.IntregationTests.csproj", "{B6F7400C-B540-4C5B-A8E7-786ADDE41859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

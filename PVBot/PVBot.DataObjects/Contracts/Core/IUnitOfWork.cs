@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 
 namespace PVBot.DataObjects.Contracts.Core
 {
-    public interface IUnitOfWork<TEntity> where TEntity : class, IEntity<Guid>
+    public interface IUnitOfWork
     {
-        IPersistence<TEntity> Persistence { get; }
-        void CommitChanges();
-        Task CommitChangesAsync();
+        IPersistence<TEntity> GetPersistence<TEntity>(Type typeEntity)
+             where TEntity : class, IEntity<Guid>;
+        void CommitChanges(Action<string> errorCallback = null);
+        Task CommitChangesAsync(Action<string> errorCallback = null);
     }
 }

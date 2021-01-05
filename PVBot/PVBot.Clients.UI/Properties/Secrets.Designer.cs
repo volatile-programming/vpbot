@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PVBot.DataObjects.Properties {
+namespace PVBot.Clients.UI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PVBot.DataObjects.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PVBot.DataObjects.Properties.Secrets", typeof(Secrets).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PVBot.Clients.UI.Properties.Secrets", typeof(Secrets).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

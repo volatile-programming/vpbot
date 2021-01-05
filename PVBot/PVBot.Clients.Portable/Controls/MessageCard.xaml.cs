@@ -3,7 +3,6 @@ using Xamarin.Forms.Xaml;
 
 using PVBot.Clients.Portable.States;
 using PVBot.DataObjects.Models;
-using System;
 
 namespace PVBot.Clients.Portable.Controls
 {
@@ -40,43 +39,14 @@ namespace PVBot.Clients.Portable.Controls
         {
             base.OnBindingContextChanged();
 
-            RefreshUI();
+            UpdateState();
         }
 
-        private void RefreshUI() => SetInitialState();
-
-        private void SetInitialState()
+        public void UpdateState(MessageState state = null)
         {
-            var result = GetCurrentState();
+            var newState = state ?? MessageState.GetCurrentState(this, CurrentState);
 
-            TransitionTo(result);
-        }
-
-        private MessageState GetCurrentState(MessageStates? state = null)
-        {
-            var currentState = state ?? CurrentState;
-
-            switch (currentState)
-            {
-                case MessageStates.ChatbotOnly:
-                    return new ChatbotOnlyState();
-                case MessageStates.ChatbotFirts:
-                    return new ChatbotFirtsState();
-                case MessageStates.ChatbotMiddle:
-                    return new ChatbotMiddleState();
-                case MessageStates.ChatbotLast:
-                    return new ChatbotLastState();
-                case MessageStates.UserOnly:
-                    return new UserOnlyState();
-                case MessageStates.UserFirts:
-                    return new UserFirtsState();
-                case MessageStates.UserMiddle:
-                    return new UserMiddleState();
-                case MessageStates.UserLast:
-                    return new UserLastState();
-                default:
-                    throw new InvalidOperationException();
-            }
+            State = newState;
         }
 
         private static void OnStateUpdated(BindableObject bindable,
@@ -89,23 +59,9 @@ namespace PVBot.Clients.Portable.Controls
             if (!(newValue is MessageStates state))
                 return;
 
-            model.UpdateState(state);
+            if (model.State != null)
+                model.State.TransitionTo(state);
         }
-
-        public void TransitionTo(MessageState state, bool isUpdatingState = false)
-        {
-            State = state;
-            State.EnterState(this, isUpdatingState);
-        }
-
-        public void UpdateState(MessageStates state)
-        {
-            var result = GetCurrentState(state);
-
-            TransitionTo(result, true);
-        }
-
-
 
         #endregion
     }

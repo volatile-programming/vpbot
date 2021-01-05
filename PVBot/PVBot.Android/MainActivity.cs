@@ -2,23 +2,19 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-
 using Auth0.OidcClient;
-using Prism;
-using Prism.Ioc;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using Prism;
+using Prism.Ioc;
 using PVBot.Clients.UI;
-using PVBot.DataObjects.Contracts.Services;
-using PVBot.DataObjects.Properties;
-using PVBot.Droid.Services;
+using PVBot.Clients.UI.Properties;
 
 namespace PVBot.Droid
 {
     [Activity(Label = "PVBot", Theme = "@style/MainTheme",
-                MainLauncher = true, Icon = "@drawable/icon", LaunchMode = LaunchMode.SingleTask,
+                MainLauncher = true, LaunchMode = LaunchMode.SingleTask,
                 ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     [IntentFilter(
         new[] { Intent.ActionView },
@@ -73,11 +69,11 @@ namespace PVBot.Droid
             var client = new Auth0Client(new Auth0ClientOptions
             {
                 Domain = Secrets.Auth0Domain,
-                ClientId = Secrets.Auth0ClientId
+                ClientId = Secrets.Auth0ClientId,
+                Scope = "openid offline_access profile email"
             }, _mainActivity);
 
-            containerRegistry.RegisterInstance(client);
-            containerRegistry.RegisterScoped<IIdentityClientService, IdentityClientService>();
+            containerRegistry.RegisterInstance<IAuth0Client>(client);
         }
     }
 }

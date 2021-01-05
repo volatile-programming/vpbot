@@ -3,6 +3,7 @@
 	x:Class="PVBot.Clients.UI.Views.ChatView"
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:idioms="clr-namespace:PVBot.DataObjects.Properties;assembly=PVBot.DataObjects"
 	xmlns:portable="http://pvbot.com">
 
 	<ContentPage.Content>
@@ -19,7 +20,8 @@
 				Grid.RowSpan="2"
 				Padding="20,-5">
 				<ListView
-					CachingStrategy="RecycleElement"
+					x:Name="MessageCardContainer"
+					CachingStrategy="RetainElement"
 					HasUnevenRows="True"
 					ItemsSource="{Binding Messages}"
 					SelectionMode="None"
@@ -31,7 +33,7 @@
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<ViewCell>
-								<portable:MessageCard CurrentState="{Binding State}" />
+								<portable:MessageCard Margin="0,2" CurrentState="{Binding State}" />
 							</ViewCell>
 						</DataTemplate>
 					</ListView.ItemTemplate>
@@ -42,7 +44,7 @@
 			</Grid>
 
 			<Grid>
-				<BoxView Background="#622AE8" CornerRadius="0,0,30,30" />
+				<BoxView BackgroundColor="{DynamicResource PrimaryColor}" CornerRadius="0,0,30,30" />
 				<Grid Grid.Row="0" Padding="20,10,20,20">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="*" />
@@ -50,7 +52,7 @@
 					</Grid.ColumnDefinitions>
 					<StackLayout Grid.Column="0" Orientation="Horizontal">
 						<Image
-							AutomationProperties.Name="PVBot icon"
+							AutomationProperties.Name="{x:Static idioms:Resource.MainScreeLogoDescription}"
 							Source="icon_white"
 							WidthRequest="50" />
 						<Label
@@ -61,7 +63,7 @@
 					</StackLayout>
 					<ImageButton
 						Grid.Column="1"
-						AutomationProperties.Name="Menu"
+						AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenOptionsButtonDescription}"
 						BackgroundColor="Transparent"
 						Command="{Binding GotoOptions}"
 						WidthRequest="20">
@@ -75,12 +77,13 @@
 			<Grid
 				x:Name="StatusIndicator"
 				Grid.Row="2"
-				HorizontalOptions="Center">
+				HorizontalOptions="Center"
+				IsVisible="{Binding ChatbotViewModel.IsThinking, Mode=TwoWay}">
 				<BoxView BackgroundColor="LightGray" CornerRadius="10" />
 				<Label
 					Margin="40,5"
 					HorizontalTextAlignment="Center"
-					Text="Pvbot is thinking..." />
+					Text="{x:Static idioms:Resource.ChatScreenLoadingMessage}" />
 			</Grid>
 
 			<Grid Grid.Row="3" ColumnSpacing="0">
@@ -94,7 +97,7 @@
 				<ImageButton
 					Grid.Column="0"
 					Margin="10,0"
-					AutomationProperties.Name="Menu"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenFileButtonDescription}"
 					BackgroundColor="Transparent"
 					Command="{Binding GotoOptions}"
 					WidthRequest="30">
@@ -114,11 +117,11 @@
 					Keyboard="Chat"
 					MaxLength="500"
 					Placeholder="Type a message"
-					Text="{Binding Model.Text}" />
+					Text="{Binding ChatBoxViewModel.Text, Mode=TwoWay}" />
 				<ImageButton
 					Grid.Column="2"
 					Margin="10,0"
-					AutomationProperties.Name="Menu"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenEmojiButtonDescription}"
 					BackgroundColor="Transparent"
 					Command="{Binding GotoOptions}"
 					WidthRequest="30">
@@ -134,10 +137,10 @@
 					Grid.Column="3"
 					Margin="10,0"
 					Padding="10"
-					AutomationProperties.Name="Menu"
-					BackgroundColor="#622AE8"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenSendButtonDescription}"
+					BackgroundColor="{DynamicResource PrimaryColor}"
 					Command="{Binding SendMessage}"
-					CommandParameter="{Binding Model.Message}"
+					CommandParameter="{Binding ChatBoxViewModel, Mode=OneWay}"
 					CornerRadius="25"
 					HeightRequest="40"
 					WidthRequest="50">

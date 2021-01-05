@@ -46,27 +46,36 @@
 
 	<!--#region Containers Bot-->
 
+	<Style x:Key="BotCollumnStyle" TargetType="Grid">
+		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
+	</Style>
+
 	<Style
 		x:Key="OnlyMessageBotStyle"
-		x:FieldModifier="public"
+		BasedOn="{StaticResource BotCollumnStyle}"
 		TargetType="Grid">
 		<Setter Property="RowDefinitions" Value="{StaticResource OnlyMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
 	</Style>
 
-	<Style x:Key="FistMessageBotStyle" TargetType="Grid">
+	<Style
+		x:Key="FistMessageBotStyle"
+		BasedOn="{StaticResource BotCollumnStyle}"
+		TargetType="Grid">
 		<Setter Property="RowDefinitions" Value="{StaticResource FistMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
 	</Style>
 
-	<Style x:Key="MiddleMessageBotStyle" TargetType="Grid">
+	<Style
+		x:Key="MiddleMessageBotStyle"
+		BasedOn="{StaticResource BotCollumnStyle}"
+		TargetType="Grid">
 		<Setter Property="RowDefinitions" Value="{StaticResource MiddleMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
 	</Style>
 
-	<Style x:Key="LastMessageBotStyle" TargetType="Grid">
+	<Style
+		x:Key="LastMessageBotStyle"
+		BasedOn="{StaticResource BotCollumnStyle}"
+		TargetType="Grid">
 		<Setter Property="RowDefinitions" Value="{StaticResource LastMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
 	</Style>
 
 	<!--#endregion-->
@@ -74,24 +83,36 @@
 
 	<!--#region Containers User-->
 
-	<Style x:Key="OnlyMessageUserStyle" TargetType="Grid">
-		<Setter Property="RowDefinitions" Value="{StaticResource OnlyMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
-	</Style>
-
-	<Style x:Key="FistMessageUserStyle" TargetType="Grid">
-		<Setter Property="RowDefinitions" Value="{StaticResource FistMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
-	</Style>
-
-	<Style x:Key="MiddleMessageUserStyle" TargetType="Grid">
-		<Setter Property="RowDefinitions" Value="{StaticResource MiddleMessageRows}" />
-		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageBot}" />
-	</Style>
-
-	<Style x:Key="LastMessageUserStyle" TargetType="Grid">
-		<Setter Property="RowDefinitions" Value="{StaticResource LastMessageRows}" />
+	<Style x:Key="UserCollumnStyle" TargetType="Grid">
 		<Setter Property="ColumnDefinitions" Value="{StaticResource CollumnsMessageUser}" />
+	</Style>
+
+	<Style
+		x:Key="OnlyMessageUserStyle"
+		BasedOn="{StaticResource UserCollumnStyle}"
+		TargetType="Grid">
+		<Setter Property="RowDefinitions" Value="{StaticResource OnlyMessageRows}" />
+	</Style>
+
+	<Style
+		x:Key="FistMessageUserStyle"
+		BasedOn="{StaticResource UserCollumnStyle}"
+		TargetType="Grid">
+		<Setter Property="RowDefinitions" Value="{StaticResource FistMessageRows}" />
+	</Style>
+
+	<Style
+		x:Key="MiddleMessageUserStyle"
+		BasedOn="{StaticResource UserCollumnStyle}"
+		TargetType="Grid">
+		<Setter Property="RowDefinitions" Value="{StaticResource MiddleMessageRows}" />
+	</Style>
+
+	<Style
+		x:Key="LastMessageUserStyle"
+		BasedOn="{StaticResource UserCollumnStyle}"
+		TargetType="Grid">
+		<Setter Property="RowDefinitions" Value="{StaticResource LastMessageRows}" />
 	</Style>
 
 	<!--#endregion-->
@@ -100,14 +121,27 @@
 	<!--#region Images-->
 
 	<Style x:Key="ChatImageBackgroundStyle" TargetType="BoxView">
-		<Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
 		<Setter Property="CornerRadius" Value="25" />
 		<Setter Property="WidthRequest" Value="50" />
 		<Setter Property="HeightRequest" Value="50" />
 	</Style>
 
+	<Style
+		x:Key="ChatImageBackgroundBotStyle"
+		BasedOn="{StaticResource ChatImageBackgroundStyle}"
+		TargetType="BoxView">
+		<Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+	</Style>
+
+	<Style
+		x:Key="ChatImageBackgroundUserStyle"
+		BasedOn="{StaticResource ChatImageBackgroundStyle}"
+		TargetType="BoxView">
+		<Setter Property="BackgroundColor" Value="{DynamicResource SecundayColor}" />
+	</Style>
+
 	<Style x:Key="ChatImageStyle" TargetType="Image">
-		<Setter Property="Margin" Value="5,0" />
+		<Setter Property="Margin" Value="5" />
 		<Setter Property="WidthRequest" Value="40" />
 	</Style>
 
@@ -118,14 +152,34 @@
 
 	<Style x:Key="MessageContainerStyle" TargetType="Frame">
 		<Setter Property="Padding" Value="20" />
-		<Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
 		<Setter Property="CornerRadius" Value="10" />
 	</Style>
 
+	<Style
+		x:Key="MessageContainerBotStyle"
+		BasedOn="{StaticResource MessageContainerStyle}"
+		TargetType="Frame">
+		<Setter Property="BackgroundColor" Value="{DynamicResource SecundayColor}" />
+	</Style>
+
+	<Style
+		x:Key="MessageContainerUserStyle"
+		BasedOn="{StaticResource MessageContainerStyle}"
+		TargetType="Frame">
+		<Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+	</Style>
+
 	<Style x:Key="ChatTextStyle" TargetType="Label">
-		<Setter Property="TextColor" Value="{DynamicResource FontHylight}" />
 		<Setter Property="FontFamily" Value="Arial" />
 		<Setter Property="FontSize" Value="Body" />
+	</Style>
+
+	<Style x:Key="ChatTextBotStyle" TargetType="Label">
+		<Setter Property="TextColor" Value="{DynamicResource FontColor}" />
+	</Style>
+
+	<Style x:Key="ChatTextUserStyle" TargetType="Label">
+		<Setter Property="TextColor" Value="{DynamicResource FontHylight}" />
 	</Style>
 
 	<!--#endregion-->

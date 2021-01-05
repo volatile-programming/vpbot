@@ -1,8 +1,6 @@
-﻿using PVBot.DataObjects.Base;
-
-namespace PVBot.DataObjects.Models
+﻿namespace PVBot.DataObjects.Models
 {
-    public class User : BaseEntity
+    public class User
     {
         public string Email { get; set; }
         public string UserName { get; set; }

@@ -6,22 +6,15 @@
 
 	<Grid x:Name="MainContainer" x:FieldModifier="public">
 
-		<Frame
-			x:Name="MessageContainer"
-			x:FieldModifier="public"
-			Style="{StaticResource MessageContainerStyle}">
+		<Frame x:Name="MessageContainer" x:FieldModifier="public">
 			<Label
 				x:Name="MessageText"
 				x:FieldModifier="public"
-				Style="{StaticResource ChatTextStyle}"
 				Text="{Binding Text}" />
 		</Frame>
 
 		<Grid x:Name="UserImageContainer" x:FieldModifier="public">
-			<BoxView
-				x:Name="UserImageBackground"
-				x:FieldModifier="public"
-				Style="{StaticResource ChatImageBackgroundStyle}" />
+			<BoxView x:Name="UserImageBackground" x:FieldModifier="public" />
 			<Image
 				x:Name="UserImage"
 				x:FieldModifier="public"
@@ -34,7 +27,7 @@
 			x:Name="DateLabel"
 			x:FieldModifier="public"
 			Style="{StaticResource ChatDateStyle}"
-			Text="{Binding Date, StringFormat='{0:D} | {0:T}'}" />
+			Text="{Binding Date, StringFormat='{0:MM/dd/yyyy} | {0:T}'}" />
 
 	</Grid>
 </ContentView>
