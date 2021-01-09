@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Prism.Commands;
 using Prism.Navigation;
@@ -46,7 +47,7 @@ namespace PVBot.ViewModels
             SendMessage = commandFactory
                 .MakeDelegateWithParameter<SendMessageCommand, IChatBoxModel>();
 
-            GotoOptions = new DelegateCommand(GotoOptionsCommand);
+            GotoOptions = new DelegateCommand(async () => await GotoOptionsCommand());
             _getMessagesQuery = queryFactory.MakeQuery<GetMessagesQuery>();
         }
 
@@ -60,10 +61,8 @@ namespace PVBot.ViewModels
         public IRepository<Message> Messages { get; }
         public Action<string> ErrorCallBack { get; }
 
-        private async void GotoOptionsCommand()
-        {
-            await _dialogService.ShowDialogAsync(Resource.WipDialogMessage);
-        }
+        private Task GotoOptionsCommand() =>
+            _dialogService.ShowDialogAsync(Resource.WipDialogMessage);
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {

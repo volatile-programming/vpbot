@@ -1,7 +1,9 @@
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
+
 using PVBot.Clients.UI.Properties;
+using PVBot.DataObjects.Contracts.Core;
 
 namespace PVBot.Clients.UI
 {
@@ -18,8 +20,8 @@ namespace PVBot.Clients.UI
 
 #if DEBUG
             // Resets access credentials for Auth0 testing.
-            //var appConfig = Container.Resolve<IApplicationConfig>();
-            //appConfig.ResetTokens();
+            var appConfig = Container.Resolve<IApplicationConfig>();
+            appConfig.ResetTokens();
 #endif
 
             var local = await NavigationService.NavigateAsync("LoginView");

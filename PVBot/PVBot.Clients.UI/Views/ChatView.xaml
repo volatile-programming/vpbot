@@ -5,16 +5,18 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:idioms="clr-namespace:PVBot.DataObjects.Properties;assembly=PVBot.DataObjects"
 	xmlns:portable="http://pvbot.com">
-
 	<ContentPage.Content>
 		<Grid RowSpacing="0">
+			<!--#region Collumns and rows-->
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
+			<!--#endregion-->
 
+			<!--#region Message list-->
 			<Grid
 				Grid.Row="1"
 				Grid.RowSpan="2"
@@ -42,7 +44,9 @@
 					</ListView.Footer>
 				</ListView>
 			</Grid>
+			<!--#endregion-->
 
+			<!--#region Header-->
 			<Grid>
 				<BoxView BackgroundColor="{DynamicResource PrimaryColor}" CornerRadius="0,0,30,30" />
 				<Grid Grid.Row="0" Padding="20,10,20,20">
@@ -57,7 +61,7 @@
 							WidthRequest="50" />
 						<Label
 							FontSize="Medium"
-							Text="Pvbot"
+							Text="{x:Static idioms:Resource.AppName}"
 							TextColor="White"
 							VerticalTextAlignment="Center" />
 					</StackLayout>
@@ -73,7 +77,9 @@
 					</ImageButton>
 				</Grid>
 			</Grid>
+			<!--#endregion-->
 
+			<!--#region Proccess indicator-->
 			<Grid
 				x:Name="StatusIndicator"
 				Grid.Row="2"
@@ -85,7 +91,9 @@
 					HorizontalTextAlignment="Center"
 					Text="{x:Static idioms:Resource.ChatScreenLoadingMessage}" />
 			</Grid>
+			<!--#endregion-->
 
+			<!--#region Message box-->
 			<Grid Grid.Row="3" ColumnSpacing="0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -93,6 +101,11 @@
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
+
+				<BoxView
+					Grid.ColumnSpan="4"
+					BackgroundColor="{DynamicResource SecundayColor}"
+					CornerRadius="30,30,0,0" />
 
 				<ImageButton
 					Grid.Column="0"
@@ -138,18 +151,16 @@
 					Margin="10,0"
 					Padding="10"
 					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenSendButtonDescription}"
-					BackgroundColor="{DynamicResource PrimaryColor}"
 					Command="{Binding SendMessage}"
 					CommandParameter="{Binding ChatBoxViewModel, Mode=OneWay}"
-					CornerRadius="25"
-					HeightRequest="40"
-					WidthRequest="50">
+					Style="{StaticResource SendCircularButtonStyle}">
 					<ImageButton.Source>
 						<FontImageSource FontFamily="{x:Static portable:Fonts.FontAwesome5Regular}" Glyph="{x:Static portable:FontAwesome5Regular.PaperPlane}" />
 					</ImageButton.Source>
 				</ImageButton>
 
 			</Grid>
+			<!--#endregion-->
 		</Grid>
 	</ContentPage.Content>
 </ContentPage>
