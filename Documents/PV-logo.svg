@@ -187,6 +187,71 @@
        fx="-12.033065"
        fy="108.91932"
        r="84.728844" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter1294-8">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood1284-1" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite1286-4" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0.625"
+         result="blur"
+         id="feGaussianBlur1288-3" />
+      <feOffset
+         dx="1"
+         dy="1"
+         result="offset"
+         id="feOffset1290-6" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="fbSourceGraphic"
+         id="feComposite1292-8" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix1296-4" />
+      <feFlood
+         id="feFlood1298-7"
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite1300-6"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur1302-3"
+         in="composite1"
+         stdDeviation="0.625"
+         result="blur" />
+      <feOffset
+         id="feOffset1304-2"
+         dx="1"
+         dy="1"
+         result="offset" />
+      <feComposite
+         in2="offset"
+         id="feComposite1306-2"
+         in="fbSourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -195,9 +260,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994948"
-     inkscape:cx="298.11094"
-     inkscape:cy="396.74989"
+     inkscape:zoom="0.49497474"
+     inkscape:cx="520.722"
+     inkscape:cy="434.91413"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -206,9 +271,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="2160"
-     inkscape:window-height="1316"
-     inkscape:window-x="2869"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1" />
   <metadata
@@ -238,37 +303,51 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <g
-       id="g1560"
+       id="g1011"
+       transform="translate(44.366742,18.174328)"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       transform="translate(-1.1339286,-10.583333)">
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#622ae8;fill-opacity:1;stroke-width:0.154621"
+         id="rect938-9-9-2"
+         width="120"
+         height="120"
+         x="-113.84222"
+         y="65.994804"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         ry="13.040178" />
       <g
-         id="g18"
-         transform="matrix(0.26458333,0,0,0.26458333,-257.81464,80.828085)"
-         style="fill:url(#radialGradient1314);fill-opacity:1">
-        <path
-           d="m 72.695778,108.92064 c 0,46.76246 -37.965062,84.72752 -84.72752,84.72752 -46.765105,0 -84.730167,-37.96506 -84.730167,-84.72752 0,-46.765103 37.965062,-84.730165 84.730167,-84.730165 46.762458,0 84.72752,37.965062 84.72752,84.730165 z"
-           id="use16"
-           style="fill:url(#radialGradient1318);fill-opacity:1;stroke-width:0.264583" />
-      </g>
-      <text
-         id="use42"
-         x="-281.20099"
-         y="99.23349"
-         font-size="25.9016px"
-         font-family="Audiowide"
-         font-weight="normal"
-         font-style="normal"
-         letter-spacing="0"
-         alignment-baseline="before-edge"
-         transform="rotate(0.15915494,10.920818,-295.70085)"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.9016px;line-height:100%;font-family:Audiowide;-inkscape-font-specification:'Audiowide, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0;dominant-baseline:text-before-edge;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.17;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.495822;filter:url(#filter1294)"
-         xml:space="preserve"
-         dominant-baseline="text-before-edge"><tspan
-           sodipodi:role="line"
-           id="tspan1320"
+         id="g976"
+         transform="translate(-2.0345302,5.5502638)">
+        <g
+           id="g18"
+           transform="matrix(0.61787727,0,0,0.61787727,-44.372729,53.14577)"
+           style="fill:url(#radialGradient1314);fill-opacity:1">
+          <path
+             d="m 72.695778,108.92064 c 0,46.76246 -37.965062,84.72752 -84.72752,84.72752 -46.765105,0 -84.730167,-37.96506 -84.730167,-84.72752 0,-46.765103 37.965062,-84.730165 84.730167,-84.730165 46.762458,0 84.72752,37.965062 84.72752,84.730165 z"
+             id="use16"
+             style="fill:url(#radialGradient1318);fill-opacity:1;stroke-width:0.264583" />
+        </g>
+        <text
+           id="use42"
            x="-281.20099"
-           y="99.23349">PV</tspan></text>
+           y="99.23349"
+           font-size="25.9016px"
+           font-family="Audiowide"
+           font-weight="normal"
+           font-style="normal"
+           letter-spacing="0"
+           alignment-baseline="before-edge"
+           transform="matrix(2.3352752,0.00648689,-0.00648689,2.3352752,559.24999,-135.67465)"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.9016px;line-height:100%;font-family:Audiowide;-inkscape-font-specification:'Audiowide, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0;dominant-baseline:text-before-edge;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.17;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.495822;filter:url(#filter1294)"
+           xml:space="preserve"
+           dominant-baseline="text-before-edge"><tspan
+             sodipodi:role="line"
+             id="tspan1320"
+             x="-281.20099"
+             y="99.23349">VP</tspan></text>
+      </g>
     </g>
     <g
        id="g893"
@@ -383,6 +462,37 @@
            rx="1.6349294"
            ry="1.4993528" />
       </g>
+    </g>
+    <g
+       id="g996"
+       transform="translate(-72.697312,54.522984)">
+      <rect
+         style="fill:#622ae8;fill-opacity:1;stroke-width:0.154621"
+         id="rect938-9-9"
+         width="120"
+         height="120"
+         x="4.2605391"
+         y="170.66455"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <text
+         id="use42-2"
+         x="-281.20099"
+         y="99.23349"
+         font-size="25.9016px"
+         font-family="Audiowide"
+         font-weight="normal"
+         font-style="normal"
+         letter-spacing="0"
+         alignment-baseline="before-edge"
+         transform="matrix(2.3352752,0.00648689,-0.00648689,2.3352752,675.31822,-25.454638)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.9016px;line-height:100%;font-family:Audiowide;-inkscape-font-specification:'Audiowide, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0;dominant-baseline:text-before-edge;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.17;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.495822;filter:url(#filter1294-8)"
+         xml:space="preserve"
+         dominant-baseline="text-before-edge"><tspan
+           sodipodi:role="line"
+           id="tspan1320-6"
+           x="-281.20099"
+           y="99.23349">VP</tspan></text>
     </g>
   </g>
 </svg>

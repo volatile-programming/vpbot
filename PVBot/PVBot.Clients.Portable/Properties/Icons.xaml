@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	x:Class="PVBot.Clients.Portable.Properties.Icons"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	<x:String x:Key="CardGeometry">
+		M20 19H4a2 2 0 01-2-2l.01-10A2 2 0 014 5h16a2 2 0 012 2v10a2 2 0 01-2 2zM9 15a1 1 0 000 2h6a1 1 0 000-2zm8-4v2h2v-2zm-3 0v2h2v-2zm-3 0v2h2v-2zm-3 0v2h2v-2zm-3 0v2h2v-2zm12-3v2h2V8zm-3 0v2h2V8zm-3 0v2h2V8zM8 8v2h2V8zM5 8v2h2V8z
+	</x:String>
+</ResourceDictionary>

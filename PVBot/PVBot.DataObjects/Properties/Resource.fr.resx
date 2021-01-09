@@ -133,4 +133,7 @@
   <data name="WipDialogMessage" xml:space="preserve">
     <value>C’est un WIP!</value>
   </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Pvbot</value>
+  </data>
 </root>

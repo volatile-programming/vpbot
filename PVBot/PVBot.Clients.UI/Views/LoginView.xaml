@@ -4,68 +4,55 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:idioms="clr-namespace:PVBot.DataObjects.Properties;assembly=PVBot.DataObjects"
-	xmlns:prism="http://prismlibrary.com"
+	xmlns:portable="http://pvbot.com"
 	Title="{Binding Title}"
 	BackgroundColor="{DynamicResource PrimaryColor}">
 
 	<ScrollView Padding="20" HorizontalScrollBarVisibility="Never">
-		<Grid Margin="0,60,0,0" RowSpacing="20">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
+		<Grid>
+			<!--#region Main Content-->
+			<Grid Margin="0,60" RowSpacing="20">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
 
-			<StackLayout>
-				<Label
-					FontSize="Large"
-					HorizontalTextAlignment="Center"
-					Text="{x:Static idioms:Resource.MainScreenGreetings}"
-					TextColor="White" />
-				<Label
-					FontSize="46"
-					HorizontalTextAlignment="Center"
-					Text="Pvbot"
-					TextColor="White" />
-			</StackLayout>
+				<StackLayout>
+					<Label Style="{StaticResource TitleFontStyle}" Text="{x:Static idioms:Resource.MainScreenGreetings}" />
+					<Label Style="{StaticResource TitleFontStyle}" Text="{x:Static idioms:Resource.AppName}" />
+				</StackLayout>
 
-			<Image
-				Grid.Row="1"
-				AutomationProperties.Name="{x:Static idioms:Resource.MainScreeLogoDescription}"
-				Source="icon_white" />
+				<Image
+					Grid.Row="1"
+					AutomationProperties.Name="{x:Static idioms:Resource.MainScreeLogoDescription}"
+					Source="icon_white" />
 
-			<StackLayout Grid.Row="2" HorizontalOptions="Center">
 				<Label
-					FontSize="Title"
-					HorizontalTextAlignment="Center"
-					Text="{x:Static idioms:Resource.MainScreenQuestion}"
-					TextColor="White" />
+					Grid.Row="2"
+					Style="{StaticResource SubTitleFontStyle}"
+					Text="{x:Static idioms:Resource.MainScreenQuestion}" />
+
 				<Button
-					x:Name="LoginButton"
-					Margin="25"
-					Background="White"
+					Grid.Row="3"
 					Command="{Binding NavitateCommand}"
-					CornerRadius="25"
-					Text="{x:Static idioms:Resource.MainScreenCustomerAnswer}"
-					TextColor="{DynamicResource PrimaryColor}" />
-			</StackLayout>
+					Style="{StaticResource BigButtonStyle}"
+					Text="{x:Static idioms:Resource.MainScreenCustomerAnswer}" />
+			</Grid>
+			<!--#endregion-->
 
-			<Grid
-				Grid.RowSpan="3"
-				BackgroundColor="{DynamicResource PrimaryColor}"
-				IsVisible="{Binding IsLoading}">
+			<!--#region Loading Indicator-->
+			<Grid BackgroundColor="{DynamicResource PrimaryColor}" IsVisible="{Binding IsLoading}">
 				<StackLayout
-					Margin="20"
 					HorizontalOptions="Center"
 					Spacing="20"
 					VerticalOptions="Center">
 					<ActivityIndicator IsRunning="{Binding IsLoading}" />
-					<Label
-						Text="{x:Static idioms:Resource.LoadingScreenMessage}"
-						TextColor="{StaticResource SecundayColor}"
-						VerticalTextAlignment="Center" />
+					<Label Style="{StaticResource SubTitleFontStyle}" Text="{x:Static idioms:Resource.LoadingScreenMessage}" />
 				</StackLayout>
 			</Grid>
+			<!--#endregion-->
 		</Grid>
 	</ScrollView>
 

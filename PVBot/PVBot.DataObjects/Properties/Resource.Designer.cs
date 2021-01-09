@@ -61,6 +61,15 @@ namespace PVBot.DataObjects.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pvbot.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds a emoji in the message..
         /// </summary>
         public static string ChatScreenEmojiButtonDescription {

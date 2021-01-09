@@ -27,7 +27,7 @@
 			x:Name="DateLabel"
 			x:FieldModifier="public"
 			Style="{StaticResource ChatDateStyle}"
-			Text="{Binding Date, StringFormat='{0:MM/dd/yyyy} | {0:T}'}" />
+			Text="{Binding Date, StringFormat='{0:T}'}" />
 
 	</Grid>
 </ContentView>
