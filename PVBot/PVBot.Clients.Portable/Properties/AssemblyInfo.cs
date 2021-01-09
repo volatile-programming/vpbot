@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XmlnsDefinition("http://pvbot.com", "PVBot.Clients.Portable.Properties.Fonts")]
 [assembly: XmlnsDefinition("http://pvbot.com", "PVBot.Clients.Portable.Properties.Styles")]
+[assembly: XmlnsDefinition("http://pvbot.com", "PVBot.Clients.Portable.Properties")]
 [assembly: XmlnsDefinition("http://pvbot.com", "PVBot.Clients.Portable.Controls")]
 
 [assembly: ExportFont("FontAwesome5Brands.otf", Alias = "FA5B")]
