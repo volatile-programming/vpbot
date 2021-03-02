@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	x:Class="VPBot.Clients.Portable.Properties.Styles.ButtonStyles"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<Style x:Key="BaseButtonStyle" TargetType="Button">
+		<Setter Property="FontFamily" Value="Roboto" />
+		<Setter Property="FontAttributes" Value="Bold" />
+	</Style>
+
+	<Style
+		x:Key="BigButtonStyle"
+		BasedOn="{StaticResource BaseButtonStyle}"
+		TargetType="Button">
+		<Setter Property="Margin" Value="25,0" />
+		<Setter Property="FontFamily" Value="Roboto" />
+		<Setter Property="HeightRequest" Value="60" />
+		<Setter Property="CornerRadius" Value="30" />
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+		<Setter Property="BackgroundColor" Value="{DynamicResource FontHylight}" />
+	</Style>
+
+	<Style x:Key="BaseCircularButtonStyle" TargetType="ImageButton">
+		<Setter Property="HeightRequest" Value="60" />
+		<Setter Property="WidthRequest" Value="60" />
+		<Setter Property="CornerRadius" Value="30" />
+		<Setter Property="BackgroundColor" Value="{DynamicResource FontHylight}" />
+	</Style>
+
+	<Style
+		x:Key="MicCircularButtonStyle"
+		BasedOn="{StaticResource BaseCircularButtonStyle}"
+		TargetType="ImageButton">
+		<Setter Property="BackgroundColor" Value="{DynamicResource FontHylight}" />
+	</Style>
+
+	<Style
+		x:Key="SendCircularButtonStyle"
+		BasedOn="{StaticResource BaseCircularButtonStyle}"
+		TargetType="ImageButton">
+		<Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+	</Style>
+
+	<Style x:Key="BaseImageButtonStyle" TargetType="ImageButton">
+		<Setter Property="WidthRequest" Value="24" />
+		<Setter Property="HeightRequest" Value="24" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+	</Style>
+
+	<Style
+		x:Key="PrimaryImageButtonStyle"
+		BasedOn="{StaticResource BaseImageButtonStyle}"
+		TargetType="ImageButton">
+		<Setter Property="VerticalOptions" Value="Center" />
+	</Style>
+
+</ResourceDictionary>

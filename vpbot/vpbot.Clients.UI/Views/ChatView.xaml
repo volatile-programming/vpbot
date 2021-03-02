@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="VPBot.Clients.UI.Views.ChatView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:idioms="clr-namespace:VPBot.DataObjects.Properties;assembly=VPBot.DataObjects"
+	xmlns:portable="http://pvbot.com">
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<!--#region Collumns and rows-->
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<!--#endregion-->
+
+			<!--#region Message list-->
+			<Grid
+				Grid.Row="1"
+				Grid.RowSpan="2"
+				Padding="20,-5">
+				<ListView
+					x:Name="MessageCardContainer"
+					CachingStrategy="RetainElement"
+					HasUnevenRows="True"
+					ItemsSource="{Binding Messages}"
+					SelectionMode="None"
+					SeparatorVisibility="None"
+					VerticalScrollBarVisibility="Never">
+					<ListView.Header>
+						<Grid HeightRequest="25" />
+					</ListView.Header>
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<portable:MessageCard Margin="0,2" CurrentState="{Binding State}" />
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+					<ListView.Footer>
+						<Grid HeightRequest="100" />
+					</ListView.Footer>
+				</ListView>
+			</Grid>
+			<!--#endregion-->
+
+			<!--#region Header-->
+			<Grid>
+				<BoxView BackgroundColor="{DynamicResource PrimaryColor}" CornerRadius="0,0,30,30" />
+				<Grid Grid.Row="0" Padding="20,10,20,20">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<StackLayout Grid.Column="0" Orientation="Horizontal">
+						<Image
+							AutomationProperties.Name="{x:Static idioms:Resource.MainScreeLogoDescription}"
+							Source="icon_white"
+							WidthRequest="50" />
+						<Label
+							FontSize="Medium"
+							Text="{x:Static idioms:Resource.AppName}"
+							TextColor="White"
+							VerticalTextAlignment="Center" />
+					</StackLayout>
+					<ImageButton
+						Grid.Column="1"
+						AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenOptionsButtonDescription}"
+						BackgroundColor="Transparent"
+						Command="{Binding GotoOptions}"
+						WidthRequest="20">
+						<ImageButton.Source>
+							<FontImageSource FontFamily="{x:Static portable:Fonts.FontAwesome5Solid}" Glyph="{x:Static portable:FontAwesome5Solid.EllipsisH}" />
+						</ImageButton.Source>
+					</ImageButton>
+				</Grid>
+			</Grid>
+			<!--#endregion-->
+
+			<!--#region Proccess indicator-->
+			<Grid
+				x:Name="StatusIndicator"
+				Grid.Row="2"
+				HorizontalOptions="Center"
+				IsVisible="{Binding ChatbotViewModel.IsThinking, Mode=TwoWay}">
+				<BoxView BackgroundColor="LightGray" CornerRadius="10" />
+				<Label
+					Margin="40,5"
+					HorizontalTextAlignment="Center"
+					Text="{x:Static idioms:Resource.ChatScreenLoadingMessage}" />
+			</Grid>
+			<!--#endregion-->
+
+			<!--#region Message box-->
+			<Grid Grid.Row="3" ColumnSpacing="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<BoxView
+					Grid.ColumnSpan="4"
+					BackgroundColor="{DynamicResource SecundayColor}"
+					CornerRadius="30,30,0,0" />
+
+				<ImageButton
+					Grid.Column="0"
+					Margin="10,0"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenFileButtonDescription}"
+					BackgroundColor="Transparent"
+					Command="{Binding GotoOptions}"
+					WidthRequest="30">
+					<ImageButton.Source>
+						<FontImageSource
+							FontFamily="{x:Static portable:Fonts.FontAwesome5Solid}"
+							Glyph="{x:Static portable:FontAwesome5Solid.Paperclip}"
+							Color="Black" />
+					</ImageButton.Source>
+				</ImageButton>
+
+				<Editor
+					Grid.Column="1"
+					AutoSize="TextChanges"
+					IsSpellCheckEnabled="True"
+					IsTextPredictionEnabled="True"
+					Keyboard="Chat"
+					MaxLength="500"
+					Placeholder="Type a message"
+					Text="{Binding ChatBoxViewModel.Text, Mode=TwoWay}" />
+				<ImageButton
+					Grid.Column="2"
+					Margin="10,0"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenEmojiButtonDescription}"
+					BackgroundColor="Transparent"
+					Command="{Binding GotoOptions}"
+					WidthRequest="30">
+					<ImageButton.Source>
+						<FontImageSource
+							FontFamily="{x:Static portable:Fonts.FontAwesome5Regular}"
+							Glyph="{x:Static portable:FontAwesome5Regular.Smile}"
+							Color="Black" />
+					</ImageButton.Source>
+				</ImageButton>
+
+				<ImageButton
+					Grid.Column="3"
+					Margin="10,0"
+					Padding="10"
+					AutomationProperties.Name="{x:Static idioms:Resource.ChatScreenSendButtonDescription}"
+					Command="{Binding SendMessage}"
+					CommandParameter="{Binding ChatBoxViewModel, Mode=OneWay}"
+					Style="{StaticResource SendCircularButtonStyle}">
+					<ImageButton.Source>
+						<FontImageSource FontFamily="{x:Static portable:Fonts.FontAwesome5Regular}" Glyph="{x:Static portable:FontAwesome5Regular.PaperPlane}" />
+					</ImageButton.Source>
+				</ImageButton>
+
+			</Grid>
+			<!--#endregion-->
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

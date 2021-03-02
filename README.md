@@ -4,7 +4,7 @@
 
 ## Descripción
 
-PVBot: Es un **chatbot** que da respuesta a algunas de las preguntas más frecuentes sobre la comunidad de **Programación volátil**.
+VPBot: Es un **chatbot** que da respuesta a algunas de las preguntas más frecuentes sobre la comunidad de **Programación volátil**.
 
 ## Diseño de la aplicación
 
@@ -22,5 +22,5 @@ PVBot: Es un **chatbot** que da respuesta a algunas de las preguntas más frecue
 7.	Plugin.ValidationRules
 
 
-[pvbot]: https://github.com/Jerajo/PVBot/blob/master/Documents/title.png?raw=true
-[general]: https://github.com/Jerajo/PVBot/blob/master/Documents/design.png?raw=true
+[pvbot]: https://github.com/Jerajo/VPBot/blob/master/Documents/title.png?raw=true
+[general]: https://github.com/Jerajo/VPBot/blob/master/Documents/design.png?raw=true

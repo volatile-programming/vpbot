@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <OutputPath>../../temp_data/bin/$(Configuration)/$(AssemblyName)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;MOCK</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Plugin.FluentValidationRules" Version="1.0.6" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.0" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+    <PackageReference Include="XF.Material" Version="1.7.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VPBot.Application.Mock\VPBot.Application.Mock.csproj" />
+    <ProjectReference Include="..\VPBot.Application\VPBot.Application.csproj" />
+    <ProjectReference Include="..\VPBot.Clients.Portable\VPBot.Clients.Portable.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Secrets.Designer.cs">
+      <DependentUpon>Secrets.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Secrets.resx">
+      <LastGenOutput>Secrets.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChatView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OptionsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Views\ChatView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>

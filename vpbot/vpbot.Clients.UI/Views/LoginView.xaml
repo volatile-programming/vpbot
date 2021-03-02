@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="VPBot.Clients.UI.Views.LoginView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:idioms="clr-namespace:VPBot.DataObjects.Properties;assembly=VPBot.DataObjects"
+	xmlns:portable="http://pvbot.com"
+	Title="{Binding Title}"
+	BackgroundColor="{DynamicResource PrimaryColor}">
+
+	<ScrollView Padding="20" HorizontalScrollBarVisibility="Never">
+		<Grid>
+			<!--#region Main Content-->
+			<Grid Margin="0,60" RowSpacing="20">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<StackLayout>
+					<Label Style="{StaticResource TitleFontStyle}" Text="{x:Static idioms:Resource.MainScreenGreetings}" />
+					<Label Style="{StaticResource TitleFontStyle}" Text="{x:Static idioms:Resource.AppName}" />
+				</StackLayout>
+
+				<Image
+					Grid.Row="1"
+					AutomationProperties.Name="{x:Static idioms:Resource.MainScreeLogoDescription}"
+					Source="icon_white" />
+
+				<Label
+					Grid.Row="2"
+					Style="{StaticResource SubTitleFontStyle}"
+					Text="{x:Static idioms:Resource.MainScreenQuestion}" />
+
+				<Button
+					Grid.Row="3"
+					Command="{Binding NavitateCommand}"
+					Style="{StaticResource BigButtonStyle}"
+					Text="{x:Static idioms:Resource.MainScreenCustomerAnswer}" />
+			</Grid>
+			<!--#endregion-->
+
+			<!--#region Loading Indicator-->
+			<Grid BackgroundColor="{DynamicResource PrimaryColor}" IsVisible="{Binding IsLoading}">
+				<StackLayout
+					HorizontalOptions="Center"
+					Spacing="20"
+					VerticalOptions="Center">
+					<ActivityIndicator IsRunning="{Binding IsLoading}" />
+					<Label Style="{StaticResource SubTitleFontStyle}" Text="{x:Static idioms:Resource.LoadingScreenMessage}" />
+				</StackLayout>
+			</Grid>
+			<!--#endregion-->
+		</Grid>
+	</ScrollView>
+
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	x:Class="VPBot.Clients.Portable.Properties.Styles.FontStyles"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+
+	<Style x:Key="BaseFontStyle" TargetType="Label">
+		<Setter Property="FontFamily" Value="Roboto" />
+	</Style>
+
+	<Style
+		x:Key="BaseRegularFontStyle"
+		BasedOn="{StaticResource BaseFontStyle}"
+		TargetType="Label">
+		<Setter Property="FontAttributes" Value="Bold" />
+	</Style>
+
+	<Style
+		x:Key="TitleFontStyle"
+		BasedOn="{StaticResource BaseFontStyle}"
+		TargetType="Label">
+		<Setter Property="FontSize" Value="35" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+		<Setter Property="TextColor" Value="{DynamicResource FontHylight}" />
+	</Style>
+
+	<Style
+		x:Key="SubTitleFontStyle"
+		BasedOn="{StaticResource BaseFontStyle}"
+		TargetType="Label">
+		<Setter Property="FontSize" Value="30" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+		<Setter Property="TextColor" Value="{DynamicResource FontHylight}" />
+	</Style>
+
+</ResourceDictionary>
