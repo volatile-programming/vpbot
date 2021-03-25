@@ -22,5 +22,5 @@ Volatile Programming Chatbot or VPBot for short. Is a **chatbot** fouced on givi
 7.	Plugin.ValidationRules
 
 
-[pvbot]: https://github.com/Jerajo/VPBot/blob/master/Documents/title.png?raw=true
-[general]: https://github.com/Jerajo/VPBot/blob/master/Documents/design.png?raw=true
+[pvbot]: https://github.com/volatile-programming/vpbot/blob/master/Documents/title.png?raw=true
+[general]: https://github.com/Jvolatile-programming/vpbot/blob/master/Documents/design.png?raw=true
