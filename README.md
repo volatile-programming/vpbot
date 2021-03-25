@@ -1,17 +1,17 @@
 ![pvbot logo][pvbot]
 
-# __PROGRAMACIÓN VOLÁTIL CHATBOT (PVBOT)__ 
+# __Volatile Programming Chatbot (IN DEVELOPMENT)__ 
 
 ## Descripción
 
-VPBot: Es un **chatbot** que da respuesta a algunas de las preguntas más frecuentes sobre la comunidad de **Programación volátil**.
+Volatile Programming Chatbot or VPBot for short. Is a **chatbot** fouced on giving answers to some of the most frequenly ask questions about the community of **Volatile Programing**.
 
-## Diseño de la aplicación
+## Application design
 
 ![normal editor][general]
 
 
-## Librerías
+## Libraries
 
 1.	Prism
 2.	Auth0
