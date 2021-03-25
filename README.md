@@ -23,4 +23,4 @@ Volatile Programming Chatbot or VPBot for short. Is a **chatbot** fouced on givi
 
 
 [pvbot]: https://github.com/volatile-programming/vpbot/blob/master/Documents/title.png?raw=true
-[general]: https://github.com/Jvolatile-programming/vpbot/blob/master/Documents/design.png?raw=true
+[general]: https://github.com/volatile-programming/vpbot/blob/master/Documents/design.png?raw=true
